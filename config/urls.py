@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -27,6 +28,14 @@ urlpatterns = [
 
     # API
     path("api/v1/", include("apps.api.urls")),
+    
+    path(
+        "api/v1/auth/",
+        include(
+            "apps.users.authentication.urls"
+        ),
+    ),
+    
 ]
 
 if settings.DEBUG:

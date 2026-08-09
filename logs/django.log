@@ -43,3 +43,166 @@ Not Found: /favicon.ico
 "GET /api/docs/ HTTP/1.1" 200 4648
 "GET /api/schema/ HTTP/1.1" 200 6846
 "GET /api/schema/ HTTP/1.1" 200 2925
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 3153
+Not Found: /
+"GET / HTTP/1.1" 404 3153
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4081
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/base.css HTTP/1.1" 200 23100
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/login.css HTTP/1.1" 200 951
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16273
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 44998
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3359
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Method Not Allowed: /api/v1/auth/login/
+"GET /api/v1/auth/login/ HTTP/1.1" 405 10390
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /api/v1/auth/login/swagger.docs
+"GET /api/v1/auth/login/swagger.docs HTTP/1.1" 404 4456
+Method Not Allowed: /api/v1/auth/login/
+"GET /api/v1/auth/login/ HTTP/1.1" 405 10390
+"OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 10701
+"OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 10701
+Not Found: /api/v1/auth/login/docs/
+"GET /api/v1/auth/login/docs/ HTTP/1.1" 404 4435
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3359
+Not Found: /api/v1/auth/login/api/docs/
+"GET /api/v1/auth/login/api/docs/ HTTP/1.1" 404 4447
+Not Found: /swagger/
+"GET /swagger/ HTTP/1.1" 404 3350
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 11353
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 11353
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /api/v1/auth/login/api/docs
+"GET /api/v1/auth/login/api/docs HTTP/1.1" 404 4444
+Not Found: /
+"GET / HTTP/1.1" 404 3308
+Not Found: /api/docs/api/v1/auth/login/
+"GET /api/docs/api/v1/auth/login/ HTTP/1.1" 404 3407
+Method Not Allowed: /api/v1/auth/login/
+"GET /api/v1/auth/login/ HTTP/1.1" 405 10390
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /api/v1/auth/login/api/docs
+"GET /api/v1/auth/login/api/docs HTTP/1.1" 404 4444
+Not Found: /api/v1/auth/login/api/docs/
+"GET /api/v1/auth/login/api/docs/ HTTP/1.1" 404 4447
+Not Found: /api/v1/auth/login/api/docs/
+"GET /api/v1/auth/login/api/docs/ HTTP/1.1" 404 4447
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 11353
+Bad Request: /api/v1/auth/login/
+"POST /api/v1/auth/login/ HTTP/1.1" 400 76
+Watching for file changes with StatReloader
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 20151
+Bad Request: /api/v1/auth/login/
+"POST /api/v1/auth/login/ HTTP/1.1" 400 41
+"POST /api/v1/auth/login/ HTTP/1.1" 200 987
+Watching for file changes with StatReloader
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 20151
+"POST /api/v1/auth/login/ HTTP/1.1" 200 980
+Unauthorized: /api/v1/auth/me/
+"GET /api/v1/auth/me/ HTTP/1.1" 401 172
+"GET /api/v1/auth/me/ HTTP/1.1" 200 264
+"POST /api/v1/auth/refresh/ HTTP/1.1" 200 697
+Internal Server Error: /api/v1/auth/logout/
+Traceback (most recent call last):
+  File "D:\curamind-ai\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\curamind-ai\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\curamind-ai\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\curamind-ai\venv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\curamind-ai\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\curamind-ai\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\curamind-ai\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\curamind-ai\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\curamind-ai\apps\users\authentication\views.py", line 139, in post
+    AuthenticationService.blacklist_refresh_token(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        refresh_token
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\curamind-ai\apps\users\authentication\services.py", line 74, in blacklist_refresh_token
+    token.blacklist()
+    ^^^^^^^^^^^^^^^
+AttributeError: 'RefreshToken' object has no attribute 'blacklist'
+"POST /api/v1/auth/logout/ HTTP/1.1" 500 22466
+"POST /api/v1/auth/refresh/ HTTP/1.1" 200 697
+Watching for file changes with StatReloader
+"GET /api/docs/ HTTP/1.1" 200 4648
+"GET /api/schema/ HTTP/1.1" 200 20151
+"POST /api/v1/auth/login/ HTTP/1.1" 200 980
+"POST /api/v1/auth/logout/ HTTP/1.1" 205 37
+Unauthorized: /api/v1/auth/refresh/
+"POST /api/v1/auth/refresh/ HTTP/1.1" 401 58
