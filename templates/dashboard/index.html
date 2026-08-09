@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard | CuraMind AI
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="container">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    CuraMind AI
+                </p>
+
+                <h1>
+                    Welcome{% if request.user.first_name %},
+                    {{ request.user.first_name }}{% endif %}
+                </h1>
+
+                <p>
+                    Manage your healthcare workspace
+                    securely from one place.
+                </p>
+
+            </div>
+
+            <div class="dashboard-user">
+
+                <span class="user-role">
+                    {{ request.user.role }}
+                </span>
+
+                <span class="user-email">
+                    {{ request.user.email }}
+                </span>
+
+            </div>
+
+        </header>
+
+        <section
+            class="dashboard-grid"
+            aria-label="Dashboard modules"
+        >
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    A
+                </div>
+
+                <div>
+
+                    <h2>
+                        Appointments
+                    </h2>
+
+                    <p>
+                        View and manage scheduled
+                        clinical appointments.
+                    </p>
+
+                    <a
+                        href="/appointments/"
+                        class="card-link"
+                    >
+                        Open appointments
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    M
+                </div>
+
+                <div>
+
+                    <h2>
+                        Medical Records
+                    </h2>
+
+                    <p>
+                        Access authorized clinical
+                        records and encounters.
+                    </p>
+
+                    <a
+                        href="/api/v1/emr/medical-records/"
+                        class="card-link"
+                    >
+                        Open medical records
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    I
+                </div>
+
+                <div>
+
+                    <h2>
+                        Imaging
+                    </h2>
+
+                    <p>
+                        Review authorized imaging
+                        studies and reports.
+                    </p>
+
+                    <a
+                        href="/api/v1/imaging/studies/"
+                        class="card-link"
+                    >
+                        Open imaging
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    R
+                </div>
+
+                <div>
+
+                    <h2>
+                        Clinical Reports
+                    </h2>
+
+                    <p>
+                        View authorized clinical
+                        reports and generated documents.
+                    </p>
+
+                    <a
+                        href="/api/v1/reports/clinical-reports/"
+                        class="card-link"
+                    >
+                        Open reports
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </div>
+
+</section>
+
+{% endblock %}
