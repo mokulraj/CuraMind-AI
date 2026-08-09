@@ -34,7 +34,7 @@ class NotificationViewSet(ModelViewSet):
             Notification.objects
             .select_related("user")
             .all()
-            .order_by("-created_at")
+            .order_by("-attempted_at")
         )
 
         if user.is_superuser:
@@ -105,7 +105,7 @@ class NotificationDeliveryAttemptViewSet(
     queryset = (
         NotificationDeliveryAttempt.objects
         .all()
-        .order_by("-created_at")
+        .order_by("-attempted_at")
     )
 
     serializer_class = (

@@ -34,7 +34,6 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "invoice_number",
             "created_at",
             "updated_at",
-            "items",
         )
 
 
@@ -74,13 +73,14 @@ class PaymentSerializer(serializers.ModelSerializer):
         )
 
 
-class PaymentTransactionSerializer(
-    serializers.ModelSerializer
-):
+class PaymentTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentTransaction
         fields = "__all__"
-        read_only_fields = "__all__"
+        read_only_fields = tuple(
+            field.name
+            for field in PaymentTransaction._meta.fields
+        )
 
 
 class RefundSerializer(serializers.ModelSerializer):

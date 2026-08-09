@@ -8,9 +8,7 @@ from .models import (
 )
 
 
-class NotificationTemplateSerializer(
-    serializers.ModelSerializer
-):
+class NotificationTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = NotificationTemplate
         fields = "__all__"
@@ -36,18 +34,17 @@ class NotificationSerializer(serializers.ModelSerializer):
         )
 
 
-class NotificationDeliveryAttemptSerializer(
-    serializers.ModelSerializer
-):
+class NotificationDeliveryAttemptSerializer(serializers.ModelSerializer):
     class Meta:
         model = NotificationDeliveryAttempt
         fields = "__all__"
-        read_only_fields = "__all__"
+        read_only_fields = tuple(
+            field.name
+            for field in NotificationDeliveryAttempt._meta.fields
+        )
 
 
-class NotificationPreferenceSerializer(
-    serializers.ModelSerializer
-):
+class NotificationPreferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = NotificationPreference
         fields = "__all__"
