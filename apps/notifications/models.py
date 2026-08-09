@@ -156,7 +156,7 @@ class NotificationTemplate(BaseModel):
                     "channel",
                     "is_active",
                 ],
-                name="notification_template_lookup_idx",
+                name="notif_template_lookup_idx",
             ),
         ]
 
