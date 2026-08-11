@@ -3,6 +3,7 @@ from datetime import timedelta
 import os
 
 import environ
+from kombu import Queue
 
 
 # ============================================================
@@ -84,7 +85,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
 
     # --------------------------------------------------------
-    # CuraMind AI applications
+    # CuraMind AI
     # --------------------------------------------------------
 
     "apps.users.apps.UsersConfig",
@@ -171,7 +172,7 @@ ASGI_APPLICATION = "config.asgi.application"
 
 
 # ============================================================
-# DATABASE - POSTGRESQL
+# POSTGRESQL DATABASE
 # ============================================================
 
 DATABASES = {
@@ -403,6 +404,10 @@ ALLOWED_REPORT_EXTENSIONS = {
     ".pdf",
 }
 
+ALLOWED_DICOM_EXTENSIONS = {
+    ".dcm",
+}
+
 
 # ============================================================
 # DJANGO REST FRAMEWORK
@@ -432,37 +437,17 @@ REST_FRAMEWORK = {
 # ============================================================
 
 SIMPLE_JWT = {
-    # --------------------------------------------------------
-    # Access token
-    # --------------------------------------------------------
-
     "ACCESS_TOKEN_LIFETIME": timedelta(
         minutes=30
     ),
-
-    # --------------------------------------------------------
-    # Refresh token
-    # --------------------------------------------------------
 
     "REFRESH_TOKEN_LIFETIME": timedelta(
         days=7
     ),
 
-    # --------------------------------------------------------
-    # Rotate refresh tokens
-    # --------------------------------------------------------
-
     "ROTATE_REFRESH_TOKENS": True,
 
-    # --------------------------------------------------------
-    # Blacklist old refresh token
-    # --------------------------------------------------------
-
     "BLACKLIST_AFTER_ROTATION": True,
-
-    # --------------------------------------------------------
-    # Authorization header
-    # --------------------------------------------------------
 
     "AUTH_HEADER_TYPES": (
         "Bearer",
@@ -624,6 +609,10 @@ CELERY_TASK_ROUTES = {
         "queue": "notifications",
     },
 
+    "apps.imaging.tasks.*": {
+        "queue": "imaging",
+    },
+
     "apps.core.tasks.*": {
         "queue": "default",
     },
@@ -634,12 +623,38 @@ CELERY_TASK_ROUTES = {
 # CELERY QUEUES
 # ============================================================
 
-from kombu import Queue
-
 CELERY_TASK_QUEUES = (
     Queue("default"),
     Queue("ai"),
+    Queue("imaging"),
     Queue("notifications"),
+)
+
+
+# ============================================================
+# DICOM
+# ============================================================
+
+DICOM_MAX_FILE_SIZE = int(
+    os.environ.get(
+        "DICOM_MAX_FILE_SIZE",
+        str(512 * 1024 * 1024),
+    )
+)
+
+DICOM_READ_TIMEOUT = int(
+    os.environ.get(
+        "DICOM_READ_TIMEOUT",
+        "30",
+    )
+)
+
+DICOM_ALLOW_FORCE_READ = (
+    os.environ.get(
+        "DICOM_ALLOW_FORCE_READ",
+        "False",
+    ).lower()
+    == "true"
 )
 
 

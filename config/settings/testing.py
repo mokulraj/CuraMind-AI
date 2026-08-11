@@ -226,6 +226,11 @@ else:
         f"{TEST_CELERY_RESULT_DB}"
     )
 
+DICOM_MAX_FILE_SIZE = 10 * 1024 * 1024
+
+DICOM_READ_TIMEOUT = 10
+
+DICOM_ALLOW_FORCE_READ = False
 
 # ============================================================
 # TEST CELERY EXECUTION

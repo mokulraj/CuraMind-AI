@@ -3,12 +3,21 @@ from pathlib import Path
 from django.core.exceptions import ValidationError
 
 
+# ============================================================
+# ALLOWED DOCUMENT FILE EXTENSIONS
+# ============================================================
+
 ALLOWED_DOCUMENT_EXTENSIONS = {
     ".pdf",
     ".doc",
     ".docx",
     ".txt",
 }
+
+
+# ============================================================
+# ALLOWED IMAGE FILE EXTENSIONS
+# ============================================================
 
 ALLOWED_IMAGE_EXTENSIONS = {
     ".jpg",
@@ -17,9 +26,28 @@ ALLOWED_IMAGE_EXTENSIONS = {
     ".webp",
 }
 
+
+# ============================================================
+# ALLOWED REPORT FILE EXTENSIONS
+# ============================================================
+
 ALLOWED_REPORT_EXTENSIONS = {
     ".pdf",
 }
+
+
+# ============================================================
+# ALLOWED DICOM FILE EXTENSIONS
+# ============================================================
+
+ALLOWED_DICOM_EXTENSIONS = {
+    ".dcm",
+}
+
+
+# ============================================================
+# MAXIMUM FILE SIZES
+# ============================================================
 
 MAX_DOCUMENT_SIZE = 10 * 1024 * 1024
 
@@ -27,6 +55,12 @@ MAX_IMAGE_SIZE = 10 * 1024 * 1024
 
 MAX_REPORT_SIZE = 25 * 1024 * 1024
 
+MAX_DICOM_SIZE = 512 * 1024 * 1024
+
+
+# ============================================================
+# FILE EXTENSION VALIDATION
+# ============================================================
 
 def validate_file_extension(
     uploaded_file,
@@ -42,6 +76,10 @@ def validate_file_extension(
         )
 
 
+# ============================================================
+# FILE SIZE VALIDATION
+# ============================================================
+
 def validate_file_size(
     uploaded_file,
     maximum_size,
@@ -51,6 +89,10 @@ def validate_file_size(
             "File size exceeds the permitted limit."
         )
 
+
+# ============================================================
+# DOCUMENT FILE VALIDATION
+# ============================================================
 
 def validate_document_file(
     uploaded_file,
@@ -66,6 +108,10 @@ def validate_document_file(
     )
 
 
+# ============================================================
+# IMAGE FILE VALIDATION
+# ============================================================
+
 def validate_image_file(
     uploaded_file,
 ):
@@ -80,6 +126,10 @@ def validate_image_file(
     )
 
 
+# ============================================================
+# REPORT FILE VALIDATION
+# ============================================================
+
 def validate_report_file(
     uploaded_file,
 ):
@@ -91,4 +141,22 @@ def validate_report_file(
     validate_file_size(
         uploaded_file,
         MAX_REPORT_SIZE,
+    )
+
+
+# ============================================================
+# DICOM FILE VALIDATION
+# ============================================================
+
+def validate_dicom_file(
+    uploaded_file,
+):
+    validate_file_extension(
+        uploaded_file,
+        ALLOWED_DICOM_EXTENSIONS,
+    )
+
+    validate_file_size(
+        uploaded_file,
+        MAX_DICOM_SIZE,
     )
