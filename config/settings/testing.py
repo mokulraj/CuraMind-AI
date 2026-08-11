@@ -1,50 +1,175 @@
 from .base import *
 
 
+# ============================================================
+# TESTING
+# ============================================================
+
 DEBUG = False
 
 ENVIRONMENT = "testing"
 
+
+# ============================================================
+# TEST DATABASE
+# ============================================================
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get(
+
+        "NAME": env(
             "TEST_POSTGRES_DB",
-            "curamind_ai_test",
+            default="curamind_ai_test",
         ),
-        "USER": os.environ.get(
+
+        "USER": env(
             "TEST_POSTGRES_USER",
-            "curamind_app",
+            default="curamind_app",
         ),
-        "PASSWORD": os.environ.get(
+
+        "PASSWORD": env(
             "TEST_POSTGRES_PASSWORD",
-            os.environ.get(
+            default=env(
                 "POSTGRES_PASSWORD",
-                "",
+                default="",
             ),
         ),
-        "HOST": os.environ.get(
+
+        "HOST": env(
             "TEST_POSTGRES_HOST",
-            os.environ.get(
+            default=env(
                 "POSTGRES_HOST",
-                "127.0.0.1",
+                default="127.0.0.1",
             ),
         ),
-        "PORT": os.environ.get(
+
+        "PORT": env(
             "TEST_POSTGRES_PORT",
-            os.environ.get(
+            default=env(
                 "POSTGRES_PORT",
-                "5432",
+                default="5432",
             ),
         ),
+
         "CONN_MAX_AGE": 0,
+
         "OPTIONS": {
             "connect_timeout": 10,
         },
     },
 }
 
+
+# ============================================================
+# PASSWORD HASHING
+# ============================================================
+
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.MD5PasswordHasher",
 ]
-EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+
+
+# ============================================================
+# EMAIL
+# ============================================================
+
+EMAIL_BACKEND = (
+    "django.core.mail.backends.locmem.EmailBackend"
+)
+
+
+# ============================================================
+# TEST REDIS
+# ============================================================
+
+TEST_REDIS_HOST = env(
+    "TEST_REDIS_HOST",
+    default=env(
+        "REDIS_HOST",
+        default="127.0.0.1",
+    ),
+)
+
+TEST_REDIS_PORT = env(
+    "TEST_REDIS_PORT",
+    default=env(
+        "REDIS_PORT",
+        default="6379",
+    ),
+)
+
+TEST_REDIS_DB = env(
+    "TEST_REDIS_DB",
+    default="15",
+)
+
+TEST_REDIS_PASSWORD = env(
+    "TEST_REDIS_PASSWORD",
+    default=env(
+        "REDIS_PASSWORD",
+        default="",
+    ),
+)
+
+
+# ============================================================
+# TEST REDIS URL
+# ============================================================
+
+if TEST_REDIS_PASSWORD:
+    TEST_REDIS_URL = (
+        f"redis://:{TEST_REDIS_PASSWORD}"
+        f"@{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_REDIS_DB}"
+    )
+else:
+    TEST_REDIS_URL = (
+        f"redis://"
+        f"{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_REDIS_DB}"
+    )
+
+
+# ============================================================
+# TEST CACHE
+# ============================================================
+
+CACHES = {
+    "default": {
+        "BACKEND": (
+            "django_redis.cache.RedisCache"
+        ),
+
+        "LOCATION": TEST_REDIS_URL,
+
+        "OPTIONS": {
+            "CLIENT_CLASS": (
+                "django_redis.client.DefaultClient"
+            ),
+
+            "SOCKET_CONNECT_TIMEOUT": 5,
+
+            "SOCKET_TIMEOUT": 5,
+
+            "IGNORE_EXCEPTIONS": False,
+        },
+
+        "KEY_PREFIX": "curamind-test",
+
+        "TIMEOUT": 60,
+    },
+}
+
+
+# ============================================================
+# TEST SESSIONS
+# ============================================================
+
+SESSION_ENGINE = (
+    "django.contrib.sessions.backends.cache"
+)
+
+SESSION_CACHE_ALIAS = "default"

@@ -1,22 +1,22 @@
+# Environment
 .env
-.env.*
-!.env.example
 
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
 
-.venv/
-venv/
-env/
+# Django
+*.log
+logs/
 
+# Local database
+db.sqlite3
+
+# Static/media generated files
 staticfiles/
 media/
 
-*.log
-
-.pytest_cache/
-.coverage
-htmlcov/
-
-.idea/
+# IDE
 .vscode/
+.idea/
