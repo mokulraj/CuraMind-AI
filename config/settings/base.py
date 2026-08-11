@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+import os
 
 import environ
 
@@ -61,7 +62,10 @@ USE_TZ = True
 # ============================================================
 
 INSTALLED_APPS = [
+    # --------------------------------------------------------
     # Django
+    # --------------------------------------------------------
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -69,14 +73,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    # --------------------------------------------------------
     # Third-party
+    # --------------------------------------------------------
+
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "drf_spectacular",
 
+    # --------------------------------------------------------
     # CuraMind AI applications
+    # --------------------------------------------------------
+
     "apps.users.apps.UsersConfig",
     "apps.core",
     "apps.appointments",
@@ -130,7 +140,9 @@ ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "BACKEND": (
+            "django.template.backends.django.DjangoTemplates"
+        ),
 
         "DIRS": [
             BASE_DIR / "templates",
@@ -218,12 +230,16 @@ REDIS_URL = env(
 
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
+        "BACKEND": (
+            "django_redis.cache.RedisCache"
+        ),
 
         "LOCATION": REDIS_URL,
 
         "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CLIENT_CLASS": (
+                "django_redis.client.DefaultClient"
+            ),
 
             "SOCKET_CONNECT_TIMEOUT": 5,
 
@@ -350,23 +366,38 @@ REST_FRAMEWORK = {
 # ============================================================
 
 SIMPLE_JWT = {
+    # --------------------------------------------------------
     # Access token
+    # --------------------------------------------------------
+
     "ACCESS_TOKEN_LIFETIME": timedelta(
         minutes=30
     ),
 
+    # --------------------------------------------------------
     # Refresh token
+    # --------------------------------------------------------
+
     "REFRESH_TOKEN_LIFETIME": timedelta(
         days=7
     ),
 
+    # --------------------------------------------------------
     # Rotate refresh tokens
+    # --------------------------------------------------------
+
     "ROTATE_REFRESH_TOKENS": True,
 
+    # --------------------------------------------------------
     # Blacklist old refresh token
+    # --------------------------------------------------------
+
     "BLACKLIST_AFTER_ROTATION": True,
 
+    # --------------------------------------------------------
     # Authorization header
+    # --------------------------------------------------------
+
     "AUTH_HEADER_TYPES": (
         "Bearer",
     ),
@@ -408,6 +439,141 @@ CELERY_BROKER_URL = env(
 CELERY_RESULT_BACKEND = env(
     "CELERY_RESULT_BACKEND",
     default="redis://127.0.0.1:6379/0",
+)
+
+
+# ============================================================
+# CELERY SERIALIZATION
+# ============================================================
+
+CELERY_ACCEPT_CONTENT = [
+    "json",
+]
+
+CELERY_TASK_SERIALIZER = "json"
+
+CELERY_RESULT_SERIALIZER = "json"
+
+CELERY_EVENT_SERIALIZER = "json"
+
+
+# ============================================================
+# CELERY TIMEZONE
+# ============================================================
+
+CELERY_TIMEZONE = TIME_ZONE
+
+CELERY_ENABLE_UTC = True
+
+
+# ============================================================
+# CELERY TASK TRACKING
+# ============================================================
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_TASK_SEND_SENT_EVENT = True
+
+CELERY_WORKER_SEND_TASK_EVENTS = True
+
+
+# ============================================================
+# CELERY EAGER EXECUTION
+# ============================================================
+
+CELERY_TASK_ALWAYS_EAGER = (
+    os.environ.get(
+        "CELERY_TASK_ALWAYS_EAGER",
+        "False",
+    ).lower()
+    == "true"
+)
+
+CELERY_TASK_EAGER_PROPAGATES = (
+    os.environ.get(
+        "CELERY_TASK_EAGER_PROPAGATES",
+        "False",
+    ).lower()
+    == "true"
+)
+
+
+# ============================================================
+# CELERY RESULT EXPIRATION
+# ============================================================
+
+CELERY_TASK_RESULT_EXPIRES = int(
+    os.environ.get(
+        "CELERY_TASK_RESULT_EXPIRES",
+        "3600",
+    )
+)
+
+
+# ============================================================
+# CELERY WORKER
+# ============================================================
+
+CELERY_WORKER_CONCURRENCY = int(
+    os.environ.get(
+        "CELERY_WORKER_CONCURRENCY",
+        "2",
+    )
+)
+
+
+# ============================================================
+# CELERY BROKER CONNECTION
+# ============================================================
+
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+CELERY_BROKER_CONNECTION_MAX_RETRIES = 10
+
+
+# ============================================================
+# CELERY TRANSPORT
+# ============================================================
+
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    "visibility_timeout": 3600,
+}
+
+CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS = {
+    "visibility_timeout": 3600,
+    "global_keyprefix": "curamind_celery_",
+}
+
+
+# ============================================================
+# CELERY TASK ROUTING
+# ============================================================
+
+CELERY_TASK_ROUTES = {
+    "apps.ai_pipeline.tasks.*": {
+        "queue": "ai",
+    },
+
+    "apps.notifications.tasks.*": {
+        "queue": "notifications",
+    },
+
+    "apps.core.tasks.*": {
+        "queue": "default",
+    },
+}
+
+
+# ============================================================
+# CELERY QUEUES
+# ============================================================
+
+from kombu import Queue
+
+CELERY_TASK_QUEUES = (
+    Queue("default"),
+    Queue("ai"),
+    Queue("notifications"),
 )
 
 

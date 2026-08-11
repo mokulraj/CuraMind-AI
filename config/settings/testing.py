@@ -173,3 +173,66 @@ SESSION_ENGINE = (
 )
 
 SESSION_CACHE_ALIAS = "default"
+
+
+# ============================================================
+# TEST CELERY REDIS
+# ============================================================
+
+TEST_CELERY_BROKER_DB = env(
+    "TEST_CELERY_BROKER_DB",
+    default="11",
+)
+
+TEST_CELERY_RESULT_DB = env(
+    "TEST_CELERY_RESULT_DB",
+    default="12",
+)
+
+
+# ============================================================
+# TEST CELERY BROKER
+# ============================================================
+
+if TEST_REDIS_PASSWORD:
+
+    CELERY_BROKER_URL = (
+        f"redis://:{TEST_REDIS_PASSWORD}"
+        f"@{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_CELERY_BROKER_DB}"
+    )
+
+    CELERY_RESULT_BACKEND = (
+        f"redis://:{TEST_REDIS_PASSWORD}"
+        f"@{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_CELERY_RESULT_DB}"
+    )
+
+else:
+
+    CELERY_BROKER_URL = (
+        f"redis://"
+        f"{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_CELERY_BROKER_DB}"
+    )
+
+    CELERY_RESULT_BACKEND = (
+        f"redis://"
+        f"{TEST_REDIS_HOST}:"
+        f"{TEST_REDIS_PORT}/"
+        f"{TEST_CELERY_RESULT_DB}"
+    )
+
+
+# ============================================================
+# TEST CELERY EXECUTION
+# ============================================================
+
+CELERY_TASK_ALWAYS_EAGER = True
+
+CELERY_TASK_EAGER_PROPAGATES = True
+
+CELERY_TASK_RESULT_EXPIRES = 60
