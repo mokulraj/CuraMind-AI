@@ -1,0 +1,3 @@
+"""
+CuraMind AI email infrastructure.
+"""

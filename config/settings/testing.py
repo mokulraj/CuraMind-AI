@@ -271,6 +271,27 @@ CURAMIND_PERMISSION_DENIED_MESSAGE = (
     "You do not have permission to access this resource."
 )
 
+
+EMAIL_BACKEND = (
+    "django.core.mail.backends.locmem.EmailBackend"
+)
+
+EMAIL_USE_TLS = False
+
+EMAIL_USE_SSL = False
+
+EMAIL_TIMEOUT = 10
+
+DEFAULT_FROM_EMAIL = (
+    "CuraMind AI <test@curamind.local>"
+)
+
+SERVER_EMAIL = (
+    "CuraMind AI <server@curamind.local>"
+)
+
+EMAIL_REPLY_TO = ""
+
 # ============================================================
 # TEST AUDIT LOGGING
 # ============================================================

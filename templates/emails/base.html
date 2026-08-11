@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ subject }}</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f6f8;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        .email-wrapper {
+            width: 100%;
+            padding: 32px 0;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .email-header {
+            padding: 24px;
+            background: #111827;
+            color: #ffffff;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .email-body {
+            padding: 32px 24px;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .email-footer {
+            padding: 20px 24px;
+            background: #f9fafb;
+            color: #6b7280;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <div class="email-container">
+
+            <div class="email-header">
+                <h1>
+                    CuraMind AI
+                </h1>
+            </div>
+
+            <div class="email-body">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div class="email-footer">
+                <p>
+                    This is an automated message from
+                    CuraMind AI.
+                </p>
+
+                <p>
+                    Please do not reply unless the
+                    message specifically instructs you
+                    to do so.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

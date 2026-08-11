@@ -18,6 +18,15 @@ EMAIL_BACKEND = (
     "django.core.mail.backends.console.EmailBackend"
 )
 
+EMAIL_BACKEND = (
+    "django.core.mail.backends.console.EmailBackend"
+)
+
+EMAIL_USE_TLS = False
+
+EMAIL_USE_SSL = False
+
+EMAIL_TIMEOUT = 10
 
 # ============================================================
 # CORS
