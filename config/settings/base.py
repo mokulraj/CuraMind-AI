@@ -445,6 +445,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    
 
     "DEFAULT_SCHEMA_CLASS": (
         "drf_spectacular.openapi.AutoSchema"
@@ -455,6 +456,9 @@ REST_FRAMEWORK = {
     ),
 }
 
+CURAMIND_PERMISSION_DENIED_MESSAGE = (
+    "You do not have permission to access this resource."
+)
 
 # ============================================================
 # SIMPLE JWT

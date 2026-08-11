@@ -267,6 +267,9 @@ AI_MODEL_TRUSTED_TYPES = [
     "sklearn.linear_model._logistic.LogisticRegression",
 ]
 
+CURAMIND_PERMISSION_DENIED_MESSAGE = (
+    "You do not have permission to access this resource."
+)
 
 # ============================================================
 # TEST AUDIT LOGGING
