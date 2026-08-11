@@ -335,7 +335,73 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR / os.environ.get(
+    "MEDIA_ROOT",
+    "media",
+)
+
+
+# ============================================================
+# FILE UPLOAD LIMITS
+# ============================================================
+
+MAX_UPLOAD_SIZE = int(
+    os.environ.get(
+        "MAX_UPLOAD_SIZE",
+        str(10 * 1024 * 1024),
+    )
+)
+
+MAX_IMAGE_UPLOAD_SIZE = int(
+    os.environ.get(
+        "MAX_IMAGE_UPLOAD_SIZE",
+        str(10 * 1024 * 1024),
+    )
+)
+
+MAX_REPORT_UPLOAD_SIZE = int(
+    os.environ.get(
+        "MAX_REPORT_UPLOAD_SIZE",
+        str(25 * 1024 * 1024),
+    )
+)
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = int(
+    os.environ.get(
+        "FILE_UPLOAD_MAX_MEMORY_SIZE",
+        str(10 * 1024 * 1024),
+    )
+)
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(
+    os.environ.get(
+        "DATA_UPLOAD_MAX_MEMORY_SIZE",
+        str(10 * 1024 * 1024),
+    )
+)
+
+
+# ============================================================
+# ALLOWED FILE EXTENSIONS
+# ============================================================
+
+ALLOWED_DOCUMENT_EXTENSIONS = {
+    ".pdf",
+    ".doc",
+    ".docx",
+    ".txt",
+}
+
+ALLOWED_IMAGE_EXTENSIONS = {
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+}
+
+ALLOWED_REPORT_EXTENSIONS = {
+    ".pdf",
+}
 
 
 # ============================================================

@@ -3,44 +3,87 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    
-    path("", include("web.urls")),
 
+# ============================================================
+# URL PATTERNS
+# ============================================================
+
+urlpatterns = [
+    # --------------------------------------------------------
+    # Django Admin
+    # --------------------------------------------------------
+
+    path(
+        "admin/",
+        admin.site.urls,
+    ),
+
+    # --------------------------------------------------------
+    # Web UI
+    # --------------------------------------------------------
+
+    path(
+        "",
+        include("web.urls"),
+    ),
+
+    # --------------------------------------------------------
     # API Documentation
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    # --------------------------------------------------------
+
+    path(
+        "api/schema/",
+        SpectacularAPIView.as_view(),
+        name="schema",
+    ),
+
     path(
         "api/docs/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
+        SpectacularSwaggerView.as_view(
+            url_name="schema",
+        ),
         name="swagger-ui",
     ),
+
     path(
         "api/redoc/",
-        SpectacularRedocView.as_view(url_name="schema"),
+        SpectacularRedocView.as_view(
+            url_name="schema",
+        ),
         name="redoc",
     ),
-    
 
+    # --------------------------------------------------------
+    # Main API
+    # --------------------------------------------------------
 
-    # API
-    path("api/v1/", include("apps.api.urls")),
-    
+    path(
+        "api/v1/",
+        include("apps.api.urls"),
+    ),
+
+    # --------------------------------------------------------
+    # Authentication API
+    # --------------------------------------------------------
+
     path(
         "api/v1/auth/",
         include(
             "apps.users.authentication.urls"
         ),
     ),
-    
 ]
+
+
+# ============================================================
+# DEVELOPMENT MEDIA FILES
+# ============================================================
 
 if settings.DEBUG:
     urlpatterns += static(
@@ -48,6 +91,12 @@ if settings.DEBUG:
         document_root=settings.MEDIA_ROOT,
     )
 
+
+# ============================================================
+# STATIC FILES
+# ============================================================
+
+if settings.DEBUG:
     urlpatterns += static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT,
