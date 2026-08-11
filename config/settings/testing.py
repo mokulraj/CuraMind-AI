@@ -241,3 +241,17 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 
 CELERY_TASK_RESULT_EXPIRES = 60
+
+AI_MODEL_PATH = (
+    "ml_models/classification/"
+    "curamind_classifier.skops"
+)
+
+AI_MODEL_VERSION = "test"
+
+AI_MODEL_SHA256 = ""
+
+AI_MODEL_TRUSTED_TYPES = [
+    "numpy.ndarray",
+    "sklearn.linear_model._logistic.LogisticRegression",
+]

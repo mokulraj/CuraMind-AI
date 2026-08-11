@@ -690,6 +690,29 @@ LOGGING = {
     },
 }
 
+AI_MODEL_PATH = os.environ.get(
+    "AI_MODEL_PATH",
+    "ml_models/classification/curamind_classifier.skops",
+)
+
+AI_MODEL_VERSION = os.environ.get(
+    "AI_MODEL_VERSION",
+    "0.1.0",
+)
+
+AI_MODEL_SHA256 = os.environ.get(
+    "AI_MODEL_SHA256",
+    "",
+)
+
+AI_MODEL_TRUSTED_TYPES = [
+    value.strip()
+    for value in os.environ.get(
+        "AI_MODEL_TRUSTED_TYPES",
+        "",
+    ).split(",")
+    if value.strip()
+]
 
 # ============================================================
 # DEFAULT AUTO FIELD

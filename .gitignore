@@ -20,3 +20,13 @@ media/
 # IDE
 .vscode/
 .idea/
+
+ml_models/*.pkl
+ml_models/*.pickle
+ml_models/*.joblib
+
+ml_models/**/*.pkl
+ml_models/**/*.pickle
+ml_models/**/*.joblib
+
+ml_models/**/*.skops
