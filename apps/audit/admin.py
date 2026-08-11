@@ -8,51 +8,45 @@ from .models import (
 )
 
 
-class ImmutableAuditAdmin(admin.ModelAdmin):
-    """
-    Prevent modification and deletion of audit records from
-    Django Admin.
-    """
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
+# ============================================================
+# AUDIT EVENT
+# ============================================================
 
 
 @admin.register(AuditEvent)
-class AuditEventAdmin(ImmutableAuditAdmin):
+class AuditEventAdmin(admin.ModelAdmin):
     list_display = (
-        "event_id",
-        "actor",
+        "created_at",
         "event_type",
         "category",
         "severity",
         "action",
-        "created_at",
+        "target_model",
+        "target_object_id",
+        "actor",
     )
+
     list_filter = (
         "event_type",
         "category",
         "severity",
+        "created_at",
     )
+
     search_fields = (
         "event_id",
         "action",
         "description",
-        "request_id",
         "target_model",
         "target_object_id",
+        "target_display",
+        "request_id",
         "ip_address",
     )
-    date_hierarchy = "created_at"
+
     readonly_fields = (
+        "id",
         "event_id",
-        "actor",
         "event_type",
         "category",
         "severity",
@@ -70,33 +64,68 @@ class AuditEventAdmin(ImmutableAuditAdmin):
         "metadata",
         "old_values",
         "new_values",
+        "actor",
         "created_at",
     )
+
+    ordering = (
+        "-created_at",
+    )
+
+    list_per_page = 50
+
+    def has_add_permission(
+        self,
+        request,
+    ):
+        return False
+
+    def has_change_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+    def has_delete_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+
+# ============================================================
+# AUTHENTICATION EVENT
+# ============================================================
 
 
 @admin.register(AuthenticationEvent)
-class AuthenticationEventAdmin(ImmutableAuditAdmin):
+class AuthenticationEventAdmin(admin.ModelAdmin):
     list_display = (
-        "user",
-        "email_attempted",
-        "event_type",
-        "success",
-        "ip_address",
         "created_at",
+        "event_type",
+        "email_attempted",
+        "success",
+        "user",
+        "ip_address",
     )
+
     list_filter = (
         "event_type",
         "success",
+        "created_at",
     )
+
     search_fields = (
         "email_attempted",
-        "ip_address",
         "request_id",
+        "ip_address",
+        "failure_reason",
     )
-    date_hierarchy = "created_at"
+
     readonly_fields = (
         "id",
-        "user",
         "email_attempted",
         "event_type",
         "success",
@@ -105,36 +134,68 @@ class AuthenticationEventAdmin(ImmutableAuditAdmin):
         "request_id",
         "failure_reason",
         "metadata",
+        "user",
         "created_at",
     )
+
+    ordering = (
+        "-created_at",
+    )
+
+    list_per_page = 50
+
+    def has_add_permission(
+        self,
+        request,
+    ):
+        return False
+
+    def has_change_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+    def has_delete_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+
+# ============================================================
+# PATIENT DATA ACCESS LOG
+# ============================================================
 
 
 @admin.register(PatientDataAccessLog)
-class PatientDataAccessLogAdmin(ImmutableAuditAdmin):
+class PatientDataAccessLogAdmin(admin.ModelAdmin):
     list_display = (
+        "created_at",
+        "access_type",
         "patient",
         "accessed_by",
-        "access_type",
         "resource_type",
         "resource_id",
-        "created_at",
     )
+
     list_filter = (
         "access_type",
-        "resource_type",
+        "created_at",
     )
+
     search_fields = (
-        "patient__user__email",
-        "accessed_by__email",
         "resource_type",
         "resource_id",
+        "purpose",
         "request_id",
+        "ip_address",
     )
-    date_hierarchy = "created_at"
+
     readonly_fields = (
         "id",
-        "patient",
-        "accessed_by",
         "access_type",
         "resource_type",
         "resource_id",
@@ -142,33 +203,107 @@ class PatientDataAccessLogAdmin(ImmutableAuditAdmin):
         "ip_address",
         "user_agent",
         "request_id",
+        "accessed_by",
+        "patient",
         "created_at",
     )
+
+    ordering = (
+        "-created_at",
+    )
+
+    list_per_page = 50
+
+    def has_add_permission(
+        self,
+        request,
+    ):
+        return False
+
+    def has_change_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+    def has_delete_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+
+# ============================================================
+# SECURITY EVENT
+# ============================================================
 
 
 @admin.register(SecurityEvent)
 class SecurityEventAdmin(admin.ModelAdmin):
     list_display = (
+        "created_at",
         "event_type",
         "severity",
-        "user",
         "resolved",
-        "resolved_by",
-        "created_at",
+        "user",
+        "ip_address",
     )
+
     list_filter = (
         "event_type",
         "severity",
         "resolved",
-    )
-    search_fields = (
-        "description",
-        "ip_address",
-        "request_id",
-        "user__email",
-    )
-    date_hierarchy = "created_at"
-    readonly_fields = (
-        "id",
         "created_at",
     )
+
+    search_fields = (
+        "description",
+        "request_id",
+        "ip_address",
+        "endpoint",
+    )
+
+    readonly_fields = (
+        "id",
+        "event_type",
+        "severity",
+        "description",
+        "ip_address",
+        "user_agent",
+        "endpoint",
+        "request_id",
+        "metadata",
+        "resolved",
+        "resolved_at",
+        "resolved_by",
+        "user",
+        "created_at",
+    )
+
+    ordering = (
+        "-created_at",
+    )
+
+    list_per_page = 50
+
+    def has_add_permission(
+        self,
+        request,
+    ):
+        return False
+
+    def has_change_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False
+
+    def has_delete_permission(
+        self,
+        request,
+        obj=None,
+    ):
+        return False

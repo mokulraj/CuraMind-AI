@@ -52,6 +52,7 @@ DATABASES = {
             ),
         ),
 
+        # Do not keep database connections open during tests.
         "CONN_MAX_AGE": 0,
 
         "OPTIONS": {
@@ -176,7 +177,7 @@ SESSION_CACHE_ALIAS = "default"
 
 
 # ============================================================
-# TEST CELERY REDIS
+# TEST CELERY REDIS DATABASES
 # ============================================================
 
 TEST_CELERY_BROKER_DB = env(
@@ -195,7 +196,6 @@ TEST_CELERY_RESULT_DB = env(
 # ============================================================
 
 if TEST_REDIS_PASSWORD:
-
     CELERY_BROKER_URL = (
         f"redis://:{TEST_REDIS_PASSWORD}"
         f"@{TEST_REDIS_HOST}:"
@@ -209,9 +209,7 @@ if TEST_REDIS_PASSWORD:
         f"{TEST_REDIS_PORT}/"
         f"{TEST_CELERY_RESULT_DB}"
     )
-
 else:
-
     CELERY_BROKER_URL = (
         f"redis://"
         f"{TEST_REDIS_HOST}:"
@@ -226,11 +224,19 @@ else:
         f"{TEST_CELERY_RESULT_DB}"
     )
 
-DICOM_MAX_FILE_SIZE = 10 * 1024 * 1024
+
+# ============================================================
+# TEST DICOM
+# ============================================================
+
+DICOM_MAX_FILE_SIZE = (
+    10 * 1024 * 1024
+)
 
 DICOM_READ_TIMEOUT = 10
 
 DICOM_ALLOW_FORCE_READ = False
+
 
 # ============================================================
 # TEST CELERY EXECUTION
@@ -241,6 +247,11 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 
 CELERY_TASK_RESULT_EXPIRES = 60
+
+
+# ============================================================
+# TEST AI MODEL
+# ============================================================
 
 AI_MODEL_PATH = (
     "ml_models/classification/"
@@ -255,3 +266,14 @@ AI_MODEL_TRUSTED_TYPES = [
     "numpy.ndarray",
     "sklearn.linear_model._logistic.LogisticRegression",
 ]
+
+
+# ============================================================
+# TEST AUDIT LOGGING
+# ============================================================
+
+AUDIT_LOG_ENABLED = True
+
+AUDIT_RETENTION_DAYS = 30
+
+AUDIT_MAX_METADATA_SIZE = 65536

@@ -109,6 +109,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    
+    "config.middleware.AuditRequestMiddleware",
 
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
@@ -127,6 +129,28 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+
+AUDIT_LOG_ENABLED = (
+    os.environ.get(
+        "AUDIT_LOG_ENABLED",
+        "True",
+    ).lower()
+    == "true"
+)
+
+AUDIT_RETENTION_DAYS = int(
+    os.environ.get(
+        "AUDIT_RETENTION_DAYS",
+        "2555",
+    )
+)
+
+AUDIT_MAX_METADATA_SIZE = int(
+    os.environ.get(
+        "AUDIT_MAX_METADATA_SIZE",
+        "65536",
+    )
+)
 
 # ============================================================
 # URL CONFIGURATION
