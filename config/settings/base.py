@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
 import environ
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -76,9 +77,33 @@ ASGI_APPLICATION = "config.asgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get(
+            "POSTGRES_DB",
+            "curamind_ai",
+        ),
+        "USER": os.environ.get(
+            "POSTGRES_USER",
+            "curamind_app",
+        ),
+        "PASSWORD": os.environ.get(
+            "POSTGRES_PASSWORD",
+            "",
+        ),
+        "HOST": os.environ.get(
+            "POSTGRES_HOST",
+            "127.0.0.1",
+        ),
+        "PORT": os.environ.get(
+            "POSTGRES_PORT",
+            "5432",
+        ),
+        "CONN_MAX_AGE": 60,
+        "CONN_HEALTH_CHECKS": True,
+        "OPTIONS": {
+            "connect_timeout": 10,
+        },
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [

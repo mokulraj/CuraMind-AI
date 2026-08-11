@@ -1,6 +1,7 @@
 from .base import *
 
 DEBUG = False
+ENVIRONMENT = "production"
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
