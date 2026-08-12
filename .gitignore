@@ -30,3 +30,9 @@ ml_models/**/*.pickle
 ml_models/**/*.joblib
 
 ml_models/**/*.skops
+
+# Docker
+docker-compose.override.yml
+
+# Docker generated/runtime directories
+staticfiles/
