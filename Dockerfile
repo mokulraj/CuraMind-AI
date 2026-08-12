@@ -92,7 +92,8 @@ HEALTHCHECK \
     --timeout=10s \
     --start-period=30s \
     --retries=3 \
-    CMD curl --fail http://127.0.0.1:8000/health/ || exit 1
+    CMD python manage.py check \
+        || exit 1
 
 # --------------------------------------------------
 # Container startup
