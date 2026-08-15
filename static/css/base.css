@@ -1,0 +1,411 @@
+/* =========================================================
+   CURAMIND AI — UNIFIED DESIGN SYSTEM
+   
+   Comprehensive design tokens for premium healthcare SaaS
+   ========================================================= */
+
+
+/* =========================================================
+   COLOR PALETTE
+   ========================================================= */
+
+:root {
+    /* --------- PRIMARY BRAND --------- */
+    --cm-primary: #2563eb;
+    --cm-primary-dark: #1d4ed8;
+    --cm-primary-soft: #eff6ff;
+    --cm-primary-hover: #1e40af;
+
+    /* --------- HEALTHCARE SEMANTIC --------- */
+    --cm-success: #16a34a;
+    --cm-success-dark: #15803d;
+    --cm-success-soft: #dcfce7;
+    
+    --cm-warning: #d97706;
+    --cm-warning-dark: #b45309;
+    --cm-warning-soft: #fef3c7;
+    
+    --cm-danger: #dc2626;
+    --cm-danger-dark: #b91c1c;
+    --cm-danger-soft: #fee2e2;
+    
+    --cm-info: #0369a1;
+    --cm-info-soft: #e0f2fe;
+
+    /* --------- SURFACES --------- */
+    --cm-bg: #f7f9fc;
+    --cm-surface: #ffffff;
+    --cm-surface-soft: #f8fafc;
+    --cm-surface-muted: #f1f5f9;
+
+    /* --------- TEXT --------- */
+    --cm-text: #172033;
+    --cm-text-secondary: #64748b;
+    --cm-text-muted: #94a3b8;
+    --cm-text-inverse: #ffffff;
+
+    /* --------- BORDERS --------- */
+    --cm-border: #e2e8f0;
+    --cm-border-soft: #eef2f7;
+    --cm-border-strong: #cbd5e1;
+
+    /* --------- LAYOUT DIMENSIONS --------- */
+    --cm-sidebar-width: 260px;
+    --cm-topbar-height: 72px;
+    --cm-mobile-nav-height: 76px;
+
+    /* --------- SPACING SCALE --------- */
+    --cm-space-2: 2px;
+    --cm-space-4: 4px;
+    --cm-space-6: 6px;
+    --cm-space-8: 8px;
+    --cm-space-12: 12px;
+    --cm-space-14: 14px;
+    --cm-space-16: 16px;
+    --cm-space-20: 20px;
+    --cm-space-24: 24px;
+    --cm-space-28: 28px;
+    --cm-space-32: 32px;
+    --cm-space-40: 40px;
+    --cm-space-48: 48px;
+
+    /* --------- BORDER RADIUS --------- */
+    --cm-radius-sm: 8px;
+    --cm-radius-md: 12px;
+    --cm-radius-lg: 18px;
+    --cm-radius-xl: 24px;
+
+    /* --------- SHADOWS --------- */
+    --cm-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --cm-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --cm-shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.12);
+    --cm-shadow-xs: 0 0 0 1px rgba(15, 23, 42, 0.08);
+
+    /* --------- TYPOGRAPHY --------- */
+    --cm-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --cm-font-mono: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+
+    /* --------- TRANSITIONS --------- */
+    --cm-transition-fast: 100ms ease;
+    --cm-transition-base: 160ms ease;
+    --cm-transition-slow: 220ms ease;
+
+    /* --------- Z-INDEX SCALE --------- */
+    --cm-z-dropdown: 50;
+    --cm-z-sticky: 100;
+    --cm-z-fixed: 200;
+    --cm-z-modal: 300;
+    --cm-z-modal-overlay: 290;
+    --cm-z-overlay: 150;
+    --cm-z-tooltip: 350;
+
+    /* --------- CONTAINER --------- */
+    --cm-container-width: 1600px;
+    --cm-container-padding: 32px;
+}
+
+
+/* =========================================================
+   RESET & NORMALIZE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--cm-bg);
+    color: var(--cm-text);
+    font-family: var(--cm-font);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+    transition: all var(--cm-transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--cm-transition-base);
+}
+
+a:hover {
+    color: var(--cm-primary-hover);
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1 {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 750;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+h2 {
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+h6 {
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+p {
+    margin: 0;
+}
+
+small {
+    font-size: 13px;
+}
+
+/* =========================================================
+   CODE BLOCKS
+   ========================================================= */
+
+code,
+pre {
+    font-family: var(--cm-font-mono);
+}
+
+code {
+    background: var(--cm-surface-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: var(--cm-radius-md);
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* =========================================================
+   FORM ELEMENTS - BASE STYLES
+   ========================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cm-border);
+    border-radius: var(--cm-radius-md);
+    background: var(--cm-surface);
+    color: var(--cm-text);
+    font-size: 14px;
+    line-height: 1.5;
+    transition: border-color var(--cm-transition-base), 
+                box-shadow var(--cm-transition-base);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--cm-text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cm-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+    background: var(--cm-surface-soft);
+    color: var(--cm-text-muted);
+    cursor: not-allowed;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 16px;
+    background: var(--cm-primary);
+    color: white;
+    border-radius: var(--cm-radius-md);
+    font-weight: 600;
+    transition: top var(--cm-transition-base);
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   SCROLLBAR STYLING
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cm-text-muted);
+}
+
+/* =========================================================
+   CONTAINER & LAYOUT UTILITIES
+   ========================================================= */
+
+.container {
+    width: min(calc(100% - 32px), var(--cm-container-width));
+    margin-inline: auto;
+}
+
+.container-fluid {
+    width: calc(100% - 32px);
+    margin-inline: auto;
+}
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Safe area inset for notch devices */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+    }
+}

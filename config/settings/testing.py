@@ -293,6 +293,23 @@ SERVER_EMAIL = (
 EMAIL_REPLY_TO = ""
 
 # ============================================================
+
+
+DEFAULT_FILE_STORAGE = (
+    "django.core.files.storage.FileSystemStorage"
+)
+
+STATICFILES_STORAGE = (
+    "django.contrib.staticfiles.storage.StaticFilesStorage"
+)
+
+MEDIA_ROOT = BASE_DIR / "test_media"
+
+MEDIA_URL = "/media/"
+
+STATIC_ROOT = BASE_DIR / "test_staticfiles"
+
+STATIC_URL = "/static/"
 # TEST AUDIT LOGGING
 # ============================================================
 

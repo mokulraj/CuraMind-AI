@@ -1,132 +1,126 @@
-{% extends "base.html" %}
+﻿{% extends "base/auth_base.html" %}
+{% load static %}
 
 {% block title %}
-    Sign In | CuraMind AI
+    Login | CuraMind AI
 {% endblock %}
 
-{% block navbar %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<section class="auth-page">
+<div class="auth-container">
 
-    <div class="auth-container">
+    <div class="auth-brand">
 
-        <div class="auth-brand">
+        <div class="auth-logo">
+            CM
+        </div>
 
-            <div class="brand-mark">
-                C
+        <div class="auth-brand-name">
+            CuraMind AI
+        </div>
+
+        <div class="auth-brand-subtitle">
+            Healthcare Intelligence Platform
+        </div>
+
+    </div>
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+
+            <div class="page-eyebrow">
+                SECURE ACCESS
             </div>
 
             <h1>
-                CuraMind AI
+                Welcome back
             </h1>
 
             <p>
-                Secure healthcare intelligence platform
+                Sign in to continue to your healthcare dashboard.
             </p>
 
         </div>
 
-        <div class="auth-card">
+        {% if error %}
+        <div class="auth-error">
+            {{ error }}
+        </div>
+        {% endif %}
 
-            <div class="auth-card-header">
+        <form
+            method="post"
+            action="{% url 'web:login' %}"
+            class="auth-form"
+        >
 
-                <h2>
-                    Sign in
-                </h2>
+            {% csrf_token %}
 
-                <p>
-                    Access your CuraMind AI account.
-                </p>
+            <div class="form-group">
+
+                <label for="id_email">
+                    Email
+                </label>
+
+                <input
+                    id="id_email"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Enter your email"
+                    value="{{ request.POST.email }}"
+                    required
+                >
 
             </div>
 
-            <form
-                method="post"
-                action="/login/"
-                class="auth-form"
-                novalidate
+            <div class="form-group">
+
+                <label for="id_password">
+                    Password
+                </label>
+
+                <input
+                    id="id_password"
+                    type="password"
+                    name="password"
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+            <input
+                type="hidden"
+                name="next"
+                value="{{ next }}"
             >
 
-                {% csrf_token %}
+            <button
+                type="submit"
+                class="auth-submit"
+            >
+                Sign In
+            </button>
 
-                {% if form.non_field_errors %}
+        </form>
 
-                    <div
-                        class="form-error"
-                        role="alert"
-                    >
-                        {{ form.non_field_errors }}
-                    </div>
+        <div class="auth-security">
 
-                {% endif %}
+            <span class="security-dot"></span>
 
-                <div class="form-field">
-
-                    <label
-                        for="{{ form.email.id_for_label }}"
-                    >
-                        Email address
-                    </label>
-
-                    {{ form.email }}
-
-                    {% if form.email.errors %}
-                        <div class="field-error">
-                            {{ form.email.errors }}
-                        </div>
-                    {% endif %}
-
-                </div>
-
-                <div class="form-field">
-
-                    <label
-                        for="{{ form.password.id_for_label }}"
-                    >
-                        Password
-                    </label>
-
-                    {{ form.password }}
-
-                    {% if form.password.errors %}
-                        <div class="field-error">
-                            {{ form.password.errors }}
-                        </div>
-                    {% endif %}
-
-                </div>
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                >
-                    Sign in
-                </button>
-
-            </form>
-
-            <div class="auth-security-note">
-
-                <span
-                    class="security-icon"
-                    aria-hidden="true"
-                >
-                    ✓
-                </span>
-
-                <span>
-                    Your connection is protected.
-                </span>
-
-            </div>
+            Secure authentication
 
         </div>
 
     </div>
 
-</section>
+</div>
 
 {% endblock %}

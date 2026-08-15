@@ -1,0 +1,432 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Medical Records | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Medical Records
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/medical-records.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="medical-records-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Medical Records
+            </h1>
+
+            <p class="page-description">
+                Review and manage patient clinical records securely.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="primary-button"
+        >
+            + New Record
+        </button>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <section class="record-stats">
+
+        <article class="record-stat-card">
+
+            <span class="record-stat-label">
+                Total Records
+            </span>
+
+            <strong class="record-stat-value">
+                342
+            </strong>
+
+        </article>
+
+
+        <article class="record-stat-card">
+
+            <span class="record-stat-label">
+                Updated Today
+            </span>
+
+            <strong class="record-stat-value">
+                16
+            </strong>
+
+        </article>
+
+
+        <article class="record-stat-card">
+
+            <span class="record-stat-label">
+                Pending Review
+            </span>
+
+            <strong class="record-stat-value">
+                8
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Search -->
+
+    <section class="dashboard-card">
+
+        <div class="records-toolbar">
+
+            <div>
+
+                <h2>
+                    Clinical Records
+                </h2>
+
+                <p>
+                    Recent patient medical records.
+                </p>
+
+            </div>
+
+
+            <div class="record-search">
+
+                <input
+                    type="search"
+                    placeholder="Search records..."
+                    aria-label="Search medical records"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Records -->
+
+        <div class="records-list">
+
+
+            <!-- Record 1 -->
+
+            <article class="record-item">
+
+                <div class="record-icon">
+                    🩺
+                </div>
+
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <div>
+
+                            <h3>
+                                General Consultation
+                            </h3>
+
+                            <span>
+                                Patient: Arun Raj · CM-1001
+                            </span>
+
+                        </div>
+
+                        <span class="record-status reviewed">
+                            Reviewed
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Routine clinical consultation and
+                        patient health assessment.
+                    </p>
+
+
+                    <div class="record-meta">
+
+                        <span>
+                            📅 14 Aug 2026
+                        </span>
+
+                        <span>
+                            👨‍⚕️ Dr. Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Record 2 -->
+
+            <article class="record-item">
+
+                <div class="record-icon">
+                    ❤️
+                </div>
+
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <div>
+
+                            <h3>
+                                Cardiology Follow-up
+                            </h3>
+
+                            <span>
+                                Patient: Sarah Peter · CM-1002
+                            </span>
+
+                        </div>
+
+                        <span class="record-status pending">
+                            Pending Review
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Follow-up consultation involving
+                        cardiovascular monitoring.
+                    </p>
+
+
+                    <div class="record-meta">
+
+                        <span>
+                            📅 13 Aug 2026
+                        </span>
+
+                        <span>
+                            👨‍⚕️ Dr. Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Record 3 -->
+
+            <article class="record-item">
+
+                <div class="record-icon">
+                    💊
+                </div>
+
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <div>
+
+                            <h3>
+                                Medication Review
+                            </h3>
+
+                            <span>
+                                Patient: Kumar M · CM-1003
+                            </span>
+
+                        </div>
+
+                        <span class="record-status reviewed">
+                            Reviewed
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Medication history and treatment
+                        plan reviewed by healthcare provider.
+                    </p>
+
+
+                    <div class="record-meta">
+
+                        <span>
+                            📅 12 Aug 2026
+                        </span>
+
+                        <span>
+                            👨‍⚕️ Dr. Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Record 4 -->
+
+            <article class="record-item">
+
+                <div class="record-icon">
+                    🔬
+                </div>
+
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <div>
+
+                            <h3>
+                                Laboratory Results
+                            </h3>
+
+                            <span>
+                                Patient: John Mathew · CM-1004
+                            </span>
+
+                        </div>
+
+                        <span class="record-status pending">
+                            Pending Review
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Recent laboratory results are available
+                        for clinical review.
+                    </p>
+
+
+                    <div class="record-meta">
+
+                        <span>
+                            📅 10 Aug 2026
+                        </span>
+
+                        <span>
+                            👨‍⚕️ Dr. Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Record Categories -->
+
+    <section class="record-categories">
+
+        <article class="record-category-card">
+
+            <div class="record-category-icon">
+                🩺
+            </div>
+
+            <h3>
+                Clinical Notes
+            </h3>
+
+            <p>
+                Consultation notes and clinical observations.
+            </p>
+
+            <button type="button">
+                View Records →
+            </button>
+
+        </article>
+
+
+        <article class="record-category-card">
+
+            <div class="record-category-icon">
+                💊
+            </div>
+
+            <h3>
+                Medications
+            </h3>
+
+            <p>
+                Medication history and treatment information.
+            </p>
+
+            <button type="button">
+                View Records →
+            </button>
+
+        </article>
+
+
+        <article class="record-category-card">
+
+            <div class="record-category-icon">
+                🔬
+            </div>
+
+            <h3>
+                Laboratory
+            </h3>
+
+            <p>
+                Laboratory results and diagnostic information.
+            </p>
+
+            <button type="button">
+                View Records →
+            </button>
+
+        </article>
+
+    </section>
+
+</div>
+
+{% endblock %}

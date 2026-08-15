@@ -1,0 +1,419 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Add Patient | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Add Patient
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/patients.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="patients-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Add Patient
+            </h1>
+
+            <p class="page-description">
+                Create a secure patient record.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Error Messages -->
+
+    {% if errors %}
+
+    <section class="dashboard-card">
+
+        <div class="auth-error">
+
+            <strong>
+                Please correct the following:
+            </strong>
+
+            <ul>
+
+                {% for error in errors %}
+
+                <li>
+                    {{ error }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- Patient Form -->
+
+    <section class="dashboard-card">
+
+        <form
+            method="post"
+            class="auth-form"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- Personal Information -->
+
+            <div class="settings-section-header">
+
+                <div>
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                    <p>
+                        Enter the patient's basic information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-form-grid">
+
+                <!-- First Name -->
+
+                <div class="form-group">
+
+                    <label for="first_name">
+                        First Name
+                    </label>
+
+                    <input
+                        id="first_name"
+                        type="text"
+                        name="first_name"
+                        value="{{ form_data.first_name|default:'' }}"
+                        placeholder="Enter first name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Last Name -->
+
+                <div class="form-group">
+
+                    <label for="last_name">
+                        Last Name
+                    </label>
+
+                    <input
+                        id="last_name"
+                        type="text"
+                        name="last_name"
+                        value="{{ form_data.last_name|default:'' }}"
+                        placeholder="Enter last name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value="{{ form_data.email|default:'' }}"
+                        placeholder="patient@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="phone_number">
+                        Phone Number
+                    </label>
+
+                    <input
+                        id="phone_number"
+                        type="tel"
+                        name="phone_number"
+                        value="{{ form_data.phone_number|default:'' }}"
+                        placeholder="+91 98765 43210"
+                    >
+
+                </div>
+
+
+                <!-- Date of Birth -->
+
+                <div class="form-group">
+
+                    <label for="date_of_birth">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        id="date_of_birth"
+                        type="date"
+                        name="date_of_birth"
+                        value="{{ form_data.date_of_birth|default:'' }}"
+                    >
+
+                </div>
+
+
+                <!-- Gender -->
+
+                <div class="form-group">
+
+                    <label for="gender">
+                        Gender
+                    </label>
+
+                    <select
+                        id="gender"
+                        name="gender"
+                    >
+
+                        <option value="">
+                            Select gender
+                        </option>
+
+                        {% for value, label in gender_choices %}
+
+                        <option
+                            value="{{ value }}"
+                            {% if form_data.gender == value %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ label }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- Blood Group -->
+
+                <div class="form-group">
+
+                    <label for="blood_group">
+                        Blood Group
+                    </label>
+
+                    <select
+                        id="blood_group"
+                        name="blood_group"
+                    >
+
+                        <option value="">
+                            Select blood group
+                        </option>
+
+                        {% for value, label in blood_group_choices %}
+
+                        <option
+                            value="{{ value }}"
+                            {% if form_data.blood_group == value %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ label }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- Medical Record Number -->
+
+                <div class="form-group">
+
+                    <label for="medical_record_number">
+                        Medical Record Number
+                    </label>
+
+                    <input
+                        id="medical_record_number"
+                        type="text"
+                        name="medical_record_number"
+                        value="{{ form_data.medical_record_number|default:'' }}"
+                        placeholder="CM-1002"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Account Information -->
+
+            <div class="settings-section-header">
+
+                <div>
+
+                    <h2>
+                        Account Information
+                    </h2>
+
+                    <p>
+                        Create the credentials the patient will use to sign in.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-form-grid">
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirm_password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        id="confirm_password"
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div class="settings-actions">
+
+                <a
+                    href="{% url 'web:patients' %}"
+                    class="secondary-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Create Patient
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Security Recommendation -->
+
+    <section class="dashboard-card">
+
+        <div class="security-row">
+
+            <div class="security-icon">
+                🛡️
+            </div>
+
+            <div class="security-content">
+
+                <strong>
+                    Patient data security
+                </strong>
+
+                <p>
+                    Patient information is stored securely and the
+                    patient account is created with a protected password.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

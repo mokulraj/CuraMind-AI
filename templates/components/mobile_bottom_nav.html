@@ -1,0 +1,51 @@
+{% if request.user.is_authenticated %}
+
+<nav
+    class="mobile-bottom-nav"
+    aria-label="Mobile navigation"
+>
+
+    <a
+        href="{% url 'web:home' %}"
+        class="mobile-nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+    >
+       <span class="mobile-nav-icon" aria-hidden="true">H</span>
+        <span>Home</span>
+    </a>
+
+    <a
+        href="{% url 'web:appointments' %}"
+        class="mobile-nav-item {% if request.resolver_match.url_name == 'appointments' %}active{% endif %}"
+    >
+        <span class="mobile-nav-icon">+</span>
+        <span>Visits</span>
+    </a>
+
+    <a
+        href="{% url 'web:patients' %}"
+        class="mobile-nav-item {% if request.resolver_match.url_name == 'patients' %}active{% endif %}"
+    >
+        <span class="mobile-nav-icon">P</span>
+        <span>Patients</span>
+    </a>
+
+    <a
+        href="{% url 'web:notifications' %}"
+        class="mobile-nav-item {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}"
+    >
+        <span class="mobile-nav-icon">N</span>
+        <span>Alerts</span>
+    </a>
+
+    <button
+        type="button"
+        class="mobile-nav-item mobile-more-button"
+        aria-label="Open more navigation"
+    >
+        <span class="mobile-nav-icon" aria-hidden="true">•••</span>
+        <span>More</span>
+    </button>
+
+</nav>
+
+{% endif %}

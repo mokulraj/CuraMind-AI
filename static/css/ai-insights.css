@@ -1,0 +1,376 @@
+.ai-insights-page {
+    width: 100%;
+}
+
+
+.primary-button {
+    border: 0;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    padding:
+        11px 18px;
+
+    background:
+        var(--cm-primary);
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.primary-button:hover {
+    opacity: 0.92;
+}
+
+
+/* Statistics */
+
+.ai-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+.ai-stat-card {
+    padding: 20px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-surface);
+
+    box-shadow:
+        var(--cm-shadow-sm);
+}
+
+
+.ai-stat-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 13px;
+}
+
+
+.ai-stat-value {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+        var(--cm-text);
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.ai-stat-note {
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 11px;
+}
+
+
+/* Clinical notice */
+
+.ai-notice {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+
+    padding: 16px 18px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-primary-soft);
+}
+
+
+.ai-notice-icon {
+    font-size: 24px;
+}
+
+
+.ai-notice strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+}
+
+
+.ai-notice p {
+    margin: 0;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* Analysis list */
+
+.ai-analysis-list {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.ai-analysis-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px 0;
+
+    border-bottom:
+        1px solid var(--cm-border);
+}
+
+
+.ai-analysis-item:last-child {
+    border-bottom: 0;
+}
+
+
+.ai-analysis-icon {
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-primary-soft);
+
+    font-size: 18px;
+}
+
+
+.ai-analysis-content {
+    flex: 1;
+}
+
+
+.ai-analysis-content h3 {
+    margin: 0 0 4px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.ai-analysis-content p {
+    margin: 0 0 5px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.ai-analysis-time {
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 10px;
+}
+
+
+.ai-confidence {
+    flex: 0 0 auto;
+
+    padding: 6px 9px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.ai-confidence.high {
+    background:
+        var(--cm-primary-soft);
+
+    color:
+        var(--cm-primary);
+}
+
+
+.ai-confidence.medium {
+    background:
+        #fff4d6;
+
+    color:
+        #9a6700;
+}
+
+
+/* AI modules */
+
+.ai-modules {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+
+.ai-module-card {
+    padding: 20px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-surface);
+
+    box-shadow:
+        var(--cm-shadow-sm);
+}
+
+
+.ai-module-icon {
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-primary-soft);
+
+    font-size: 20px;
+}
+
+
+.ai-module-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+}
+
+
+.ai-module-card p {
+    min-height: 54px;
+
+    margin: 0 0 16px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.ai-module-card button {
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        var(--cm-primary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* Responsive */
+
+@media (max-width: 850px) {
+
+    .ai-stats,
+    .ai-modules {
+        grid-template-columns: 1fr;
+    }
+
+
+    .ai-analysis-item {
+        align-items: flex-start;
+    }
+
+
+    .ai-confidence {
+        display: none;
+    }
+
+}

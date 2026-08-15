@@ -1,0 +1,548 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Settings | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Settings
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/settings.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Settings
+            </h1>
+
+            <p class="page-description">
+                Manage your profile, account preferences and security.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Success Message -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="auth-success">
+                ✓ {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- Profile -->
+
+    <section class="dashboard-card profile-card">
+
+        <div class="settings-section-header">
+
+            <div>
+
+                <h2>
+                    Profile Information
+                </h2>
+
+                <p>
+                    Manage your personal account information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile Header -->
+
+        <div class="profile-header">
+
+            <div class="large-avatar">
+
+                {{ request.user.first_name|first|upper }}{{ request.user.last_name|first|upper }}
+
+            </div>
+
+
+            <div class="profile-identity">
+
+                <h3>
+                    {{ request.user.full_name }}
+                </h3>
+
+                <p>
+                    {{ request.user.get_role_display }}
+                </p>
+
+                <span>
+                    CuraMind AI
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="secondary-button"
+            >
+                Change Photo
+            </button>
+
+        </div>
+
+
+        <!-- Profile Form -->
+
+       <form
+    method="post"
+    class="settings-profile-form"
+>
+
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+        <div class="form-error">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    <div class="settings-form-grid">
+
+        <div class="form-group">
+
+            <label for="{{ form.first_name.id_for_label }}">
+                First Name
+            </label>
+
+            {{ form.first_name }}
+
+            {% for error in form.first_name.errors %}
+                <div class="field-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="{{ form.last_name.id_for_label }}">
+                Last Name
+            </label>
+
+            {{ form.last_name }}
+
+            {% for error in form.last_name.errors %}
+                <div class="field-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="{{ form.email.id_for_label }}">
+                Email Address
+            </label>
+
+            {{ form.email }}
+
+            {% for error in form.email.errors %}
+                <div class="field-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="{{ form.phone_number.id_for_label }}">
+                Phone Number
+            </label>
+
+            {{ form.phone_number }}
+
+            {% for error in form.phone_number.errors %}
+                <div class="field-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-actions">
+
+        <button
+            type="submit"
+            class="primary-button"
+        >
+            Save Changes
+        </button>
+
+    </div>
+
+</form>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="{{ form.email.id_for_label }}">
+                        Email Address
+                    </label>
+
+                    {{ form.email }}
+
+                    {% for error in form.email.errors %}
+
+                        <div class="field-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="{{ form.phone_number.id_for_label }}">
+                        Phone Number
+                    </label>
+
+                    {{ form.phone_number }}
+
+                    {% for error in form.phone_number.errors %}
+
+                        <div class="field-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Save -->
+
+            <div class="settings-actions">
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Preferences -->
+
+    <section class="dashboard-card settings-section">
+
+        <div class="settings-section-header">
+
+            <div>
+
+                <h2>
+                    Preferences
+                </h2>
+
+                <p>
+                    Configure how CuraMind AI behaves for your account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="preference-list">
+
+
+            <!-- Email Notifications -->
+
+            <div class="preference-item">
+
+                <div>
+
+                    <strong>
+                        Email Notifications
+                    </strong>
+
+                    <p>
+                        Receive important healthcare platform notifications.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- Appointment Reminders -->
+
+            <div class="preference-item">
+
+                <div>
+
+                    <strong>
+                        Appointment Reminders
+                    </strong>
+
+                    <p>
+                        Receive reminders about upcoming appointments.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- AI Notifications -->
+
+            <div class="preference-item">
+
+                <div>
+
+                    <strong>
+                        AI Analysis Notifications
+                    </strong>
+
+                    <p>
+                        Get notified when an AI analysis is ready for review.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Security -->
+
+    <section class="dashboard-card settings-section">
+
+        <div class="settings-section-header">
+
+            <div>
+
+                <h2>
+                    Security
+                </h2>
+
+                <p>
+                    Protect your CuraMind AI account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="security-row">
+
+            <div class="security-icon">
+                🔐
+            </div>
+
+
+            <div class="security-content">
+
+                <strong>
+                    Password
+                </strong>
+
+                <p>
+                    Manage your account password securely.
+                </p>
+
+            </div>
+
+
+            <a
+                href="{% url 'web:password-change' %}"
+                class="secondary-button"
+            >
+                Change Password
+            </a>
+
+        </div>
+
+
+        <!-- Two Factor -->
+
+        <div class="security-row">
+
+            <div class="security-icon">
+                🛡️
+            </div>
+
+
+            <div class="security-content">
+
+                <strong>
+                    Two-Factor Authentication
+                </strong>
+
+                <p>
+                    Add an additional layer of account security.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="secondary-button"
+            >
+                Configure
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Danger Zone -->
+
+    <section class="dashboard-card danger-zone">
+
+        <div class="settings-section-header">
+
+            <div>
+
+                <h2>
+                    Account Actions
+                </h2>
+
+                <p>
+                    Actions that affect your account session.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="danger-row">
+
+            <div>
+
+                <strong>
+                    Sign out of CuraMind AI
+                </strong>
+
+                <p>
+                    End your current account session.
+                </p>
+
+            </div>
+
+
+            <a
+                href="{% url 'web:logout' %}"
+                class="danger-button"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+{% endblock %}

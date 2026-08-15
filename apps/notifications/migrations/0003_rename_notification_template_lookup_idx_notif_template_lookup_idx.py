@@ -14,5 +14,6 @@ class Migration(migrations.Migration):
             model_name="notificationtemplate",
             new_name="notif_template_lookup_idx",
             old_name="notification_template_lookup_idx",
+            
         ),
     ]

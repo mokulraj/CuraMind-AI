@@ -1,0 +1,489 @@
+{% extends "base/base.html" %}
+
+
+{% block title %}
+    Dashboard | CuraMind AI
+{% endblock %}
+
+
+{% block page_heading %}
+    CuraMind AI
+{% endblock %}
+
+
+{% block content %}
+
+<div class="dashboard-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
+
+    <section class="page-header">
+
+        <div class="page-eyebrow">
+            CURAMIND AI
+        </div>
+
+        <h1 class="page-title">
+            Welcome
+        </h1>
+
+        <p class="page-description">
+            Manage your healthcare workspace securely from one place.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+         ===================================================== -->
+
+    <section
+        class="stats-grid"
+        aria-label="Healthcare statistics"
+    >
+
+
+        <article class="stat-card">
+
+            <div class="stat-card-header">
+
+                <span class="stat-label">
+                    Appointments
+                </span>
+
+                <div class="stat-icon">
+                    A
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                12
+            </div>
+
+            <div class="stat-change positive">
+                Upcoming appointments
+            </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <div class="stat-card-header">
+
+                <span class="stat-label">
+                    Medical Records
+                </span>
+
+                <div class="stat-icon">
+                    M
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                24
+            </div>
+
+            <div class="stat-change positive">
+                Available records
+            </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <div class="stat-card-header">
+
+                <span class="stat-label">
+                    Imaging
+                </span>
+
+                <div class="stat-icon">
+                    I
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                5
+            </div>
+
+            <div class="stat-change warning">
+                Studies available
+            </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <div class="stat-card-header">
+
+                <span class="stat-label">
+                    Clinical Reports
+                </span>
+
+                <div class="stat-icon">
+                    R
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                3
+            </div>
+
+            <div class="stat-change positive">
+                Reports available
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD
+         ===================================================== -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- =================================================
+             APPOINTMENTS
+             ================================================= -->
+
+        <article class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <h2>
+                        Upcoming Appointments
+                    </h2>
+
+                    <p>
+                        Your scheduled clinical appointments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="appointment-list">
+
+
+                <div class="appointment-item">
+
+                    <div class="appointment-time">
+                        09:30
+                    </div>
+
+                    <div class="appointment-details">
+
+                        <strong>
+                            General Consultation
+                        </strong>
+
+                        <span>
+                            Dr. Healthcare Professional
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div class="appointment-item">
+
+                    <div class="appointment-time">
+                        11:00
+                    </div>
+
+                    <div class="appointment-details">
+
+                        <strong>
+                            Follow-up Consultation
+                        </strong>
+
+                        <span>
+                            Clinical Department
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div class="appointment-item">
+
+                    <div class="appointment-time">
+                        15:30
+                    </div>
+
+                    <div class="appointment-details">
+
+                        <strong>
+                            Medical Review
+                        </strong>
+
+                        <span>
+                            Healthcare Department
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Tomorrow
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             AI INSIGHTS
+             ================================================= -->
+
+        <article class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <h2>
+                        AI Insights
+                    </h2>
+
+                    <p>
+                        Intelligent healthcare workspace insights.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-insight">
+
+                <div class="ai-insight-icon">
+                    AI
+                </div>
+
+                <div>
+
+                    <strong>
+                        Patient activity
+                    </strong>
+
+                    <p>
+                        Recent healthcare activity is available
+                        for review.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-insight">
+
+                <div class="ai-insight-icon">
+                    AI
+                </div>
+
+                <div>
+
+                    <strong>
+                        Clinical records
+                    </strong>
+
+                    <p>
+                        Authorized medical records are ready
+                        for access.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-insight">
+
+                <div class="ai-insight-icon">
+                    AI
+                </div>
+
+                <div>
+
+                    <strong>
+                        Reports
+                    </strong>
+
+                    <p>
+                        Review your latest clinical reports
+                        and generated documents.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         RECENT ACTIVITY
+         ===================================================== -->
+
+    <section class="dashboard-card recent-activity-card">
+
+
+        <div class="dashboard-card-header">
+
+            <div>
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+                <p>
+                    Recent activity across your healthcare workspace.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="activity-table-wrapper">
+
+            <table class="activity-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Activity
+                        </th>
+
+                        <th>
+                            Module
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td data-label="Activity">
+                            Appointment scheduled
+                        </td>
+
+                        <td data-label="Module">
+                            Appointments
+                        </td>
+
+                        <td data-label="Status">
+                            Confirmed
+                        </td>
+
+                        <td data-label="Date">
+                            Today
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td data-label="Activity">
+                            Medical record updated
+                        </td>
+
+                        <td data-label="Module">
+                            Medical Records
+                        </td>
+
+                        <td data-label="Status">
+                            Completed
+                        </td>
+
+                        <td data-label="Date">
+                            Today
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td data-label="Activity">
+                            Clinical report generated
+                        </td>
+
+                        <td data-label="Module">
+                            Reports
+                        </td>
+
+                        <td data-label="Status">
+                            Available
+                        </td>
+
+                        <td data-label="Date">
+                            Yesterday
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+{% endblock %}

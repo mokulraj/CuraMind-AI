@@ -1,0 +1,273 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Appointments | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Appointments
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/appointments.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="appointments-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Appointments
+            </h1>
+
+            <p class="page-description">
+                Manage scheduled clinical appointments securely.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="primary-button"
+        >
+            + New Appointment
+        </button>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <section class="appointment-stats">
+
+        <article class="appointment-stat-card">
+
+            <span class="appointment-stat-label">
+                Today's Appointments
+            </span>
+
+            <strong class="appointment-stat-value">
+                4
+            </strong>
+
+        </article>
+
+
+        <article class="appointment-stat-card">
+
+            <span class="appointment-stat-label">
+                Upcoming
+            </span>
+
+            <strong class="appointment-stat-value">
+                12
+            </strong>
+
+        </article>
+
+
+        <article class="appointment-stat-card">
+
+            <span class="appointment-stat-label">
+                Completed
+            </span>
+
+            <strong class="appointment-stat-value">
+                28
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Appointment List -->
+
+    <section class="dashboard-card">
+
+        <div class="dashboard-card-header">
+
+            <div>
+
+                <h2>
+                    Upcoming Appointments
+                </h2>
+
+                <p>
+                    Your scheduled clinical appointments.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="appointment-table-wrapper">
+
+            <table class="appointment-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Time
+                        </th>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Appointment Type
+                        </th>
+
+                        <th>
+                            Provider
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            09:30 AM
+                        </td>
+
+                        <td>
+                            Patient A
+                        </td>
+
+                        <td>
+                            General Consultation
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+                            <span class="appointment-status confirmed">
+                                Confirmed
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            11:00 AM
+                        </td>
+
+                        <td>
+                            Patient B
+                        </td>
+
+                        <td>
+                            Follow-up Consultation
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+                            <span class="appointment-status pending">
+                                Pending
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            03:30 PM
+                        </td>
+
+                        <td>
+                            Patient C
+                        </td>
+
+                        <td>
+                            Medical Review
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+                            <span class="appointment-status confirmed">
+                                Confirmed
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Tomorrow
+                        </td>
+
+                        <td>
+                            Patient D
+                        </td>
+
+                        <td>
+                            Clinical Consultation
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+                            <span class="appointment-status pending">
+                                Pending
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base/base.html" %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/notifications.css' %}"
+>
+
+{% endblock %}
+{% block title %}
+    Notifications | CuraMind AI
+{% endblock %}
+
+
+{% block page_heading %}
+    Notifications
+{% endblock %}
+
+
+{% block content %}
+
+<div class="notifications-page">
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                ACTIVITY CENTER
+            </div>
+
+            <h1 class="page-title">
+                Notifications
+            </h1>
+
+            <p class="page-description">
+                Stay informed about activity across your CuraMind AI account.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <section class="dashboard-card notifications-card">
+
+        {% if notifications %}
+
+            <div class="notification-list">
+
+                {% for notification in notifications %}
+
+                    <article
+                        class="
+                            notification-item
+                            {% if not notification.is_read %}
+                                notification-unread
+                            {% endif %}
+                        "
+                    >
+
+                        <div class="notification-item-icon">
+
+                            {% if notification.notification_type == "appointment" %}
+                                📅
+
+                            {% elif notification.notification_type == "ai_insight" %}
+                                🧠
+
+                            {% elif notification.notification_type == "medical_record" %}
+                                📋
+
+                            {% elif notification.notification_type == "security" %}
+                                🔐
+
+                            {% else %}
+                                ℹ️
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="notification-item-content">
+
+                            <div class="notification-item-top">
+
+                                <h3>
+                                    {{ notification.title }}
+                                </h3>
+
+                                {% if not notification.is_read %}
+
+                                    <span class="notification-unread-dot"></span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <p>
+                                {{ notification.message }}
+                            </p>
+
+
+                            <time>
+                                {{ notification.created_at|date:"M d, Y · h:i A" }}
+                            </time>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <div class="empty-state-icon">
+                    🔔
+                </div>
+
+                <h2>
+                    No notifications
+                </h2>
+
+                <p>
+                    You're all caught up.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}

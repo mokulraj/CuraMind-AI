@@ -1,0 +1,507 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Medical Imaging | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Medical Imaging
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/imaging.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="imaging-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Medical Imaging
+            </h1>
+
+            <p class="page-description">
+                Review diagnostic images and AI-assisted imaging analysis.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="primary-button"
+        >
+            + Upload Study
+        </button>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <section class="imaging-stats">
+
+        <article class="imaging-stat-card">
+
+            <span class="imaging-stat-label">
+                Total Studies
+            </span>
+
+            <strong class="imaging-stat-value">
+                86
+            </strong>
+
+        </article>
+
+
+        <article class="imaging-stat-card">
+
+            <span class="imaging-stat-label">
+                Pending Review
+            </span>
+
+            <strong class="imaging-stat-value">
+                7
+            </strong>
+
+        </article>
+
+
+        <article class="imaging-stat-card">
+
+            <span class="imaging-stat-label">
+                AI Analyses
+            </span>
+
+            <strong class="imaging-stat-value">
+                64
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Upload Area -->
+
+    <section class="dashboard-card imaging-upload-card">
+
+        <div class="upload-icon">
+            🖼️
+        </div>
+
+        <h2>
+            Upload Medical Study
+        </h2>
+
+        <p>
+            Upload supported diagnostic imaging files for clinical review.
+        </p>
+
+        <button
+            type="button"
+            class="secondary-button"
+        >
+            Choose File
+        </button>
+
+        <span class="upload-note">
+            Secure upload · Authorized healthcare users only
+        </span>
+
+    </section>
+
+
+    <!-- Recent Studies -->
+
+    <section class="dashboard-card">
+
+        <div class="imaging-toolbar">
+
+            <div>
+
+                <h2>
+                    Recent Imaging Studies
+                </h2>
+
+                <p>
+                    Recently uploaded diagnostic studies.
+                </p>
+
+            </div>
+
+
+            <div class="imaging-search">
+
+                <input
+                    type="search"
+                    placeholder="Search studies..."
+                    aria-label="Search imaging studies"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="imaging-table-wrapper">
+
+            <table class="imaging-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Study
+                        </th>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Modality
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            AI Analysis
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            <div class="study-name">
+
+                                <div class="study-icon">
+                                    🫁
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Chest Study
+                                    </strong>
+
+                                    <span>
+                                        IMG-2026-001
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Arun Raj
+                        </td>
+
+                        <td>
+                            X-Ray
+                        </td>
+
+                        <td>
+                            14 Aug 2026
+                        </td>
+
+                        <td>
+
+                            <span class="ai-badge completed">
+                                Completed
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="study-status reviewed">
+                                Reviewed
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="study-name">
+
+                                <div class="study-icon">
+                                    ❤️
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Cardiac Imaging
+                                    </strong>
+
+                                    <span>
+                                        IMG-2026-002
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Sarah Peter
+                        </td>
+
+                        <td>
+                            CT
+                        </td>
+
+                        <td>
+                            13 Aug 2026
+                        </td>
+
+                        <td>
+
+                            <span class="ai-badge completed">
+                                Completed
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="study-status reviewed">
+                                Reviewed
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="study-name">
+
+                                <div class="study-icon">
+                                    🦴
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Knee Imaging
+                                    </strong>
+
+                                    <span>
+                                        IMG-2026-003
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Kumar M
+                        </td>
+
+                        <td>
+                            MRI
+                        </td>
+
+                        <td>
+                            12 Aug 2026
+                        </td>
+
+                        <td>
+
+                            <span class="ai-badge processing">
+                                Processing
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="study-status pending">
+                                Pending
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="study-name">
+
+                                <div class="study-icon">
+                                    🧠
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Brain Imaging
+                                    </strong>
+
+                                    <span>
+                                        IMG-2026-004
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            John Mathew
+                        </td>
+
+                        <td>
+                            MRI
+                        </td>
+
+                        <td>
+                            10 Aug 2026
+                        </td>
+
+                        <td>
+
+                            <span class="ai-badge completed">
+                                Completed
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="study-status reviewed">
+                                Reviewed
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Imaging Modules -->
+
+    <section class="imaging-modules">
+
+        <article class="imaging-module-card">
+
+            <div class="module-icon">
+                🔬
+            </div>
+
+            <h3>
+                Image Analysis
+            </h3>
+
+            <p>
+                Review AI-assisted findings from diagnostic images.
+            </p>
+
+            <button type="button">
+                Open Analysis →
+            </button>
+
+        </article>
+
+
+        <article class="imaging-module-card">
+
+            <div class="module-icon">
+                📁
+            </div>
+
+            <h3>
+                Imaging Archive
+            </h3>
+
+            <p>
+                Access previously uploaded medical imaging studies.
+            </p>
+
+            <button type="button">
+                Open Archive →
+            </button>
+
+        </article>
+
+
+        <article class="imaging-module-card">
+
+            <div class="module-icon">
+                📊
+            </div>
+
+            <h3>
+                Imaging Reports
+            </h3>
+
+            <p>
+                Review diagnostic reports associated with imaging studies.
+            </p>
+
+            <button type="button">
+                View Reports →
+            </button>
+
+        </article>
+
+    </section>
+
+</div>
+
+{% endblock %}

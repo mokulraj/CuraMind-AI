@@ -1,0 +1,166 @@
+.appointments-page {
+    width: 100%;
+}
+
+
+.primary-button {
+    border: 0;
+    border-radius: var(--cm-radius-md);
+    padding: 11px 18px;
+
+    background: var(--cm-primary);
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.primary-button:hover {
+    opacity: 0.92;
+}
+
+
+.appointment-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+.appointment-stat-card {
+    padding: 20px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-surface);
+
+    box-shadow:
+        var(--cm-shadow-sm);
+}
+
+
+.appointment-stat-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 13px;
+}
+
+
+.appointment-stat-value {
+    display: block;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color:
+        var(--cm-text);
+}
+
+
+.appointment-table-wrapper {
+    overflow-x: auto;
+}
+
+
+.appointment-table {
+    width: 100%;
+
+    border-collapse:
+        collapse;
+}
+
+
+.appointment-table th,
+.appointment-table td {
+    padding: 14px 10px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid var(--cm-border);
+
+    font-size: 13px;
+}
+
+
+.appointment-table th {
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+.appointment-status {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.appointment-status.confirmed {
+    background:
+        var(--cm-primary-soft);
+
+    color:
+        var(--cm-primary);
+}
+
+
+.appointment-status.pending {
+    background:
+        #fff4d6;
+
+    color:
+        #9a6700;
+}
+
+
+@media (max-width: 700px) {
+
+    .appointment-stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .page-header {
+        align-items: flex-start;
+    }
+
+
+    .primary-button {
+        width: 100%;
+    }
+
+}

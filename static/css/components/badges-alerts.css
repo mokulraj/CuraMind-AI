@@ -1,0 +1,298 @@
+/* ============================================================
+   BADGE & ALERT COMPONENT SYSTEMS
+   ============================================================ */
+
+/* ============================================================
+   BADGE COMPONENT
+   ============================================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ----- BADGE VARIANTS ----- */
+
+.badge-primary {
+    background: var(--cm-primary-soft);
+    color: var(--cm-primary);
+}
+
+.badge-success {
+    background: rgba(22, 163, 74, 0.1);
+    color: var(--cm-success);
+}
+
+.badge-warning {
+    background: var(--cm-warning-soft);
+    color: var(--cm-warning);
+}
+
+.badge-danger {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--cm-danger);
+}
+
+.badge-info {
+    background: var(--cm-info-soft);
+    color: var(--cm-info);
+}
+
+.badge-muted {
+    background: var(--cm-surface-muted);
+    color: var(--cm-text-secondary);
+}
+
+/* ----- STATUS BADGES (Legacy compat) ----- */
+
+.appointment-status,
+.patient-status,
+.record-status,
+.report-status,
+.ai-badge,
+.study-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.appointment-status.confirmed,
+.patient-status.active,
+.study-status.reviewed,
+.record-status.reviewed,
+.ai-badge.completed {
+    background: var(--cm-primary-soft);
+    color: var(--cm-primary);
+}
+
+.appointment-status.pending,
+.patient-status.inactive,
+.study-status.pending,
+.record-status.pending,
+.ai-badge.processing {
+    background: var(--cm-warning-soft);
+    color: var(--cm-warning);
+}
+
+.report-status.completed {
+    background: var(--cm-success-soft);
+    color: var(--cm-success);
+}
+
+.report-status.draft {
+    background: var(--cm-surface-muted);
+    color: var(--cm-text-secondary);
+}
+
+.report-status.review {
+    background: var(--cm-warning-soft);
+    color: var(--cm-warning);
+}
+
+/* ----- BADGE SIZES ----- */
+
+.badge-sm {
+    padding: 3px 6px;
+    font-size: 9px;
+}
+
+.badge-lg {
+    padding: 7px 12px;
+    font-size: 11px;
+}
+
+/* ----- NOTIFICATION BADGE ----- */
+
+.notification-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--cm-danger);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ============================================================
+   ALERT COMPONENT
+   ============================================================ */
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid;
+    border-radius: var(--cm-radius-md);
+    font-size: 13px;
+    line-height: 1.5;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-icon {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.alert-content {
+    flex: 1 1 auto;
+}
+
+.alert-title {
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.alert-message {
+    margin: 0;
+    font-size: 12px;
+}
+
+.alert-close {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--cm-transition-base);
+}
+
+.alert-close:hover {
+    opacity: 0.8;
+}
+
+/* ----- ALERT VARIANTS ----- */
+
+.alert-info {
+    border-color: var(--cm-info);
+    background: var(--cm-info-soft);
+    color: var(--cm-info);
+}
+
+.alert-success {
+    border-color: var(--cm-success);
+    background: rgba(22, 163, 74, 0.1);
+    color: var(--cm-success);
+}
+
+.alert-warning {
+    border-color: var(--cm-warning);
+    background: var(--cm-warning-soft);
+    color: var(--cm-warning);
+}
+
+.alert-danger,
+.alert-error {
+    border-color: var(--cm-danger);
+    background: rgba(220, 38, 38, 0.05);
+    color: var(--cm-danger);
+}
+
+/* ----- ALERT SIZES ----- */
+
+.alert-sm {
+    padding: 10px 12px;
+    font-size: 12px;
+}
+
+.alert-lg {
+    padding: 16px 20px;
+    font-size: 14px;
+}
+
+/* ----- ALERT DISMISSIBLE ----- */
+
+.alert.is-dismissing {
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+/* ----- LEGACY SUPPORT ----- */
+
+.auth-error,
+.form-error,
+.site-message {
+    padding: 11px 13px;
+    border: 1px solid;
+    border-radius: var(--cm-radius-md);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.auth-error,
+.form-error {
+    border-color: var(--cm-danger);
+    background: rgba(220, 38, 38, 0.05);
+    color: var(--cm-danger);
+    margin-bottom: 18px;
+}
+
+.field-error {
+    color: var(--cm-danger);
+    font-size: 10px;
+    margin-top: -3px;
+}
+
+/* ----- MOBILE RESPONSIVE ----- */
+
+@media (max-width: 600px) {
+    .alert {
+        padding: 11px 12px;
+        gap: 10px;
+    }
+
+    .alert-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 14px;
+    }
+
+    .alert-title {
+        font-size: 12px;
+    }
+
+    .alert-message {
+        font-size: 11px;
+    }
+}

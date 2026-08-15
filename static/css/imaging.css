@@ -1,0 +1,517 @@
+.imaging-page {
+    width: 100%;
+}
+
+
+/* Buttons */
+
+.primary-button,
+.secondary-button {
+    border-radius:
+        var(--cm-radius-md);
+
+    padding:
+        11px 18px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.primary-button {
+    border: 0;
+
+    background:
+        var(--cm-primary);
+
+    color: white;
+}
+
+
+.primary-button:hover {
+    opacity: 0.92;
+}
+
+
+.secondary-button {
+    border:
+        1px solid var(--cm-border);
+
+    background:
+        var(--cm-surface);
+
+    color:
+        var(--cm-text);
+}
+
+
+.secondary-button:hover {
+    border-color:
+        var(--cm-primary);
+
+    color:
+        var(--cm-primary);
+}
+
+
+/* Statistics */
+
+.imaging-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+.imaging-stat-card {
+    padding: 20px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-surface);
+
+    box-shadow:
+        var(--cm-shadow-sm);
+}
+
+
+.imaging-stat-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 13px;
+}
+
+
+.imaging-stat-value {
+    display: block;
+
+    color:
+        var(--cm-text);
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+/* Upload */
+
+.imaging-upload-card {
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 210px;
+
+    margin-bottom: 22px;
+
+    text-align: center;
+
+    border-style: dashed;
+}
+
+
+.upload-icon {
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-primary-soft);
+
+    font-size: 24px;
+}
+
+
+.imaging-upload-card h2 {
+    margin: 0 0 7px;
+
+    font-size: 17px;
+}
+
+
+.imaging-upload-card p {
+    margin: 0 0 16px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+}
+
+
+.upload-note {
+    margin-top: 10px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 10px;
+}
+
+
+/* Toolbar */
+
+.imaging-toolbar {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+
+.imaging-toolbar h2 {
+    margin: 0 0 4px;
+
+    font-size: 17px;
+}
+
+
+.imaging-toolbar p {
+    margin: 0;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+}
+
+
+.imaging-search input {
+    width: 250px;
+
+    padding: 10px 13px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-bg);
+
+    color:
+        var(--cm-text);
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+
+.imaging-search input:focus {
+    border-color:
+        var(--cm-primary);
+}
+
+
+/* Table */
+
+.imaging-table-wrapper {
+    overflow-x: auto;
+}
+
+
+.imaging-table {
+    width: 100%;
+
+    border-collapse:
+        collapse;
+}
+
+
+.imaging-table th,
+.imaging-table td {
+    padding:
+        14px 10px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid var(--cm-border);
+
+    font-size: 12px;
+}
+
+
+.imaging-table th {
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+/* Study */
+
+.study-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.study-icon {
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-primary-soft);
+
+    font-size: 16px;
+}
+
+
+.study-name strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 12px;
+}
+
+
+.study-name span {
+    display: block;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 10px;
+}
+
+
+/* Badges */
+
+.ai-badge,
+.study-status {
+    display: inline-block;
+
+    padding:
+        5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.ai-badge.completed {
+    background:
+        var(--cm-primary-soft);
+
+    color:
+        var(--cm-primary);
+}
+
+
+.ai-badge.processing {
+    background:
+        #fff4d6;
+
+    color:
+        #9a6700;
+}
+
+
+.study-status.reviewed {
+    background:
+        var(--cm-primary-soft);
+
+    color:
+        var(--cm-primary);
+}
+
+
+.study-status.pending {
+    background:
+        #fff4d6;
+
+    color:
+        #9a6700;
+}
+
+
+/* Modules */
+
+.imaging-modules {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+
+.imaging-module-card {
+    padding: 20px;
+
+    border:
+        1px solid var(--cm-border);
+
+    border-radius:
+        var(--cm-radius-lg);
+
+    background:
+        var(--cm-surface);
+
+    box-shadow:
+        var(--cm-shadow-sm);
+}
+
+
+.module-icon {
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-primary-soft);
+
+    font-size: 19px;
+}
+
+
+.imaging-module-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+}
+
+
+.imaging-module-card p {
+    min-height: 38px;
+
+    margin: 0 0 15px;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.imaging-module-card button {
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        var(--cm-primary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* Responsive */
+
+@media (max-width: 850px) {
+
+    .imaging-stats,
+    .imaging-modules {
+        grid-template-columns: 1fr;
+    }
+
+
+    .imaging-toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .imaging-search {
+        width: 100%;
+    }
+
+
+    .imaging-search input {
+        width: 100%;
+    }
+
+}

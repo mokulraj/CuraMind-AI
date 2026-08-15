@@ -1,0 +1,463 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Clinical Reports | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Clinical Reports
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/reports.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="reports-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Clinical Reports
+            </h1>
+
+            <p class="page-description">
+                Create, review and manage clinical reports securely.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="primary-button"
+        >
+            + New Report
+        </button>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <section class="report-stats">
+
+        <article class="report-stat-card">
+
+            <span class="report-stat-label">
+                Total Reports
+            </span>
+
+            <strong class="report-stat-value">
+                214
+            </strong>
+
+        </article>
+
+
+        <article class="report-stat-card">
+
+            <span class="report-stat-label">
+                Completed
+            </span>
+
+            <strong class="report-stat-value">
+                186
+            </strong>
+
+        </article>
+
+
+        <article class="report-stat-card">
+
+            <span class="report-stat-label">
+                Pending Review
+            </span>
+
+            <strong class="report-stat-value">
+                28
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Reports -->
+
+    <section class="dashboard-card">
+
+        <div class="reports-toolbar">
+
+            <div>
+
+                <h2>
+                    Recent Reports
+                </h2>
+
+                <p>
+                    Recently created clinical reports.
+                </p>
+
+            </div>
+
+
+            <div class="report-search">
+
+                <input
+                    type="search"
+                    placeholder="Search reports..."
+                    aria-label="Search clinical reports"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="report-table-wrapper">
+
+            <table class="report-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Report
+                        </th>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Created
+                        </th>
+
+                        <th>
+                            Author
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="report-name">
+
+                                <div class="report-icon">
+                                    📄
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        General Consultation Report
+                                    </strong>
+
+                                    <span>
+                                        RPT-2026-001
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Arun Raj
+                        </td>
+
+                        <td>
+                            Consultation
+                        </td>
+
+                        <td>
+                            14 Aug 2026
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+
+                            <span class="report-status completed">
+                                Completed
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="report-name">
+
+                                <div class="report-icon">
+                                    ❤️
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Cardiology Report
+                                    </strong>
+
+                                    <span>
+                                        RPT-2026-002
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Sarah Peter
+                        </td>
+
+                        <td>
+                            Cardiology
+                        </td>
+
+                        <td>
+                            13 Aug 2026
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+
+                            <span class="report-status review">
+                                Under Review
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="report-name">
+
+                                <div class="report-icon">
+                                    🔬
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Laboratory Report
+                                    </strong>
+
+                                    <span>
+                                        RPT-2026-003
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Kumar M
+                        </td>
+
+                        <td>
+                            Laboratory
+                        </td>
+
+                        <td>
+                            12 Aug 2026
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+
+                            <span class="report-status completed">
+                                Completed
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="report-name">
+
+                                <div class="report-icon">
+                                    🧠
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Neurology Assessment
+                                    </strong>
+
+                                    <span>
+                                        RPT-2026-004
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            John Mathew
+                        </td>
+
+                        <td>
+                            Neurology
+                        </td>
+
+                        <td>
+                            10 Aug 2026
+                        </td>
+
+                        <td>
+                            Dr. Admin
+                        </td>
+
+                        <td>
+
+                            <span class="report-status draft">
+                                Draft
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Report Categories -->
+
+    <section class="report-categories">
+
+        <article class="report-category-card">
+
+            <div class="report-category-icon">
+                🩺
+            </div>
+
+            <h3>
+                Clinical Reports
+            </h3>
+
+            <p>
+                Consultation notes, assessments and clinical summaries.
+            </p>
+
+            <button type="button">
+                View Reports →
+            </button>
+
+        </article>
+
+
+        <article class="report-category-card">
+
+            <div class="report-category-icon">
+                🖼️
+            </div>
+
+            <h3>
+                Imaging Reports
+            </h3>
+
+            <p>
+                Diagnostic imaging findings and interpretations.
+            </p>
+
+            <button type="button">
+                View Reports →
+            </button>
+
+        </article>
+
+
+        <article class="report-category-card">
+
+            <div class="report-category-icon">
+                🧠
+            </div>
+
+            <h3>
+                AI Reports
+            </h3>
+
+            <p>
+                AI-assisted analysis and clinical intelligence reports.
+            </p>
+
+            <button type="button">
+                View Reports →
+            </button>
+
+        </article>
+
+    </section>
+
+</div>
+
+{% endblock %}

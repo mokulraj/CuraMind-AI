@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+            CuraMind AI
+        {% endblock %}
+    </title>
+
+    <meta
+        name="description"
+        content="CuraMind AI Healthcare Intelligence Platform"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/base.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/auth.css' %}"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body class="auth-layout">
+
+    <main class="auth-main">
+
+    {% if messages %}
+
+        <div class="auth-messages">
+
+            {% for message in messages %}
+
+                <div
+                    class="site-message site-message-{{ message.tags }}"
+                >
+
+                    <span class="message-icon">
+                        ✓
+                    </span>
+
+                    <span>
+                        {{ message }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+    <footer class="auth-footer">
+
+        <span>
+            © {% now "Y" %} CuraMind AI
+        </span>
+
+        <span>
+            Healthcare Intelligence Platform
+        </span>
+
+    </footer>
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

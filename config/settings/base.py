@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     "apps.payments",
     "apps.reports",
     "apps.api",
+    "web",
 ]
 
 
@@ -180,6 +181,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "apps.notifications.context_processors.notification_context",
             ],
         },
     },
@@ -245,7 +247,7 @@ DATABASES = {
 
 REDIS_URL = env(
     "REDIS_URL",
-    default="redis://127.0.0.1:6379/1",
+    default="redis://redis:6379/1",
 )
 
 
@@ -813,6 +815,97 @@ if EMAIL_USE_TLS and EMAIL_USE_SSL:
         "EMAIL_USE_TLS and EMAIL_USE_SSL "
         "cannot both be enabled."
     )
+    
+    
+    # =========================================================
+# AWS S3
+# =========================================================
+
+AWS_ACCESS_KEY_ID = os.environ.get(
+    "AWS_ACCESS_KEY_ID",
+    "",
+)
+
+AWS_SECRET_ACCESS_KEY = os.environ.get(
+    "AWS_SECRET_ACCESS_KEY",
+    "",
+)
+
+AWS_SESSION_TOKEN = os.environ.get(
+    "AWS_SESSION_TOKEN",
+    "",
+)
+
+AWS_STORAGE_BUCKET_NAME = os.environ.get(
+    "AWS_STORAGE_BUCKET_NAME",
+    "",
+)
+
+AWS_S3_REGION_NAME = os.environ.get(
+    "AWS_S3_REGION_NAME",
+    "ap-south-1",
+)
+
+AWS_S3_ENDPOINT_URL = os.environ.get(
+    "AWS_S3_ENDPOINT_URL",
+    "",
+)
+
+AWS_S3_CUSTOM_DOMAIN = os.environ.get(
+    "AWS_S3_CUSTOM_DOMAIN",
+    "",
+)
+
+AWS_S3_SIGNATURE_VERSION = os.environ.get(
+    "AWS_S3_SIGNATURE_VERSION",
+    "s3v4",
+)
+
+AWS_S3_ADDRESSING_STYLE = os.environ.get(
+    "AWS_S3_ADDRESSING_STYLE",
+    "virtual",
+)
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_DEFAULT_ACL = None
+
+AWS_QUERYSTRING_AUTH = True
+
+AWS_QUERYSTRING_EXPIRE = int(
+    os.environ.get(
+        "AWS_QUERYSTRING_EXPIRE",
+        "300",
+    )
+)
+
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": os.environ.get(
+        "AWS_S3_CACHE_CONTROL",
+        "max-age=86400",
+    ),
+}
+
+AWS_S3_VERIFY = (
+    os.environ.get(
+        "AWS_S3_VERIFY",
+        "True",
+    ).lower()
+    == "true"
+)
+
+AWS_S3_USE_SSL = (
+    os.environ.get(
+        "AWS_S3_USE_SSL",
+        "True",
+    ).lower()
+    == "true"
+)
+
+AWS_LOCATION = os.environ.get(
+    "AWS_LOCATION",
+    "media",
+)
 # ============================================================
 # DEFAULT AUTO FIELD
 # ============================================================

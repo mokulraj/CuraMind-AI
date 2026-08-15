@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="CuraMind AI — Intelligent Healthcare Platform"
+    >
+
+    <meta
+        name="application-name"
+        content="CuraMind AI"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0f172a"
+    >
+
+    <title>
+        {% block title %}
+            CuraMind AI
+        {% endblock %}
+    </title>
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/base.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/layout.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/components.css' %}"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<a
+    href="#main-content"
+    class="skip-link"
+>
+    Skip to main content
+</a>
+
+<div
+    class="app-shell"
+    id="appShell"
+>
+
+    {% block sidebar %}
+        {% include "components/sidebar.html" %}
+    {% endblock %}
+
+    <div
+        class="mobile-sidebar-overlay"
+        id="mobileSidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+    <div class="main-area">
+
+        {% block navbar %}
+            {% include "components/navbar.html" %}
+        {% endblock %}
+
+        <main
+            id="main-content"
+            class="main-content"
+        >
+
+            {% include "components/messages.html" %}
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+        {% block footer %}
+            {% include "components/footer.html" %}
+        {% endblock %}
+
+    </div>
+
+</div>
+
+{% include "components/mobile_bottom_nav.html" %}
+
+<script
+    src="{% static 'js/main.js' %}"
+    defer
+></script>
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+</html>

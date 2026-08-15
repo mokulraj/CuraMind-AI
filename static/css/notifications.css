@@ -1,0 +1,163 @@
+.notifications-page {
+    width: 100%;
+}
+
+
+.notifications-card {
+    max-width: 900px;
+}
+
+
+.notification-list {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.notification-item {
+    display: flex;
+
+    gap: 14px;
+
+    padding: 17px 0;
+
+    border-bottom:
+        1px solid var(--cm-border);
+}
+
+
+.notification-item:first-child {
+    padding-top: 0;
+}
+
+
+.notification-item:last-child {
+    padding-bottom: 0;
+
+    border-bottom: 0;
+}
+
+
+.notification-item-icon {
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border-radius:
+        var(--cm-radius-md);
+
+    background:
+        var(--cm-bg);
+
+    font-size: 17px;
+}
+
+
+.notification-item-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.notification-item-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.notification-item-top h3 {
+    margin: 0;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.notification-item-content p {
+    margin: 6px 0;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+.notification-item-content time {
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 9px;
+}
+
+
+.notification-unread {
+    position: relative;
+}
+
+
+.notification-unread .notification-item-icon {
+    background:
+        var(--cm-primary-soft);
+}
+
+
+.notification-unread-dot {
+    width: 7px;
+
+    height: 7px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background:
+        var(--cm-primary);
+}
+
+
+.empty-state {
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+
+.empty-state-icon {
+    margin-bottom: 12px;
+
+    font-size: 30px;
+}
+
+
+.empty-state h2 {
+    margin: 0 0 6px;
+
+    font-size: 16px;
+}
+
+
+.empty-state p {
+    margin: 0;
+
+    color:
+        var(--cm-text-secondary);
+
+    font-size: 11px;
+}

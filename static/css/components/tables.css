@@ -1,0 +1,324 @@
+/* ============================================================
+   TABLE COMPONENT SYSTEM
+   ============================================================ */
+
+/* ----- TABLE WRAPPER ----- */
+
+.table-wrapper,
+.appointment-table-wrapper,
+.patient-table-wrapper,
+.imaging-table-wrapper,
+.activity-table-wrapper,
+.report-table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--cm-radius-md);
+    border: 1px solid var(--cm-border);
+    background: var(--cm-surface);
+}
+
+/* ----- BASE TABLE ----- */
+
+.table,
+.appointment-table,
+.patient-table,
+.imaging-table,
+.activity-table,
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+/* ----- TABLE HEADER ----- */
+
+.table th,
+.appointment-table th,
+.patient-table th,
+.imaging-table th,
+.activity-table th,
+.report-table th {
+    padding: 13px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--cm-border);
+    background: var(--cm-surface-muted);
+    color: var(--cm-text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* ----- TABLE CELL ----- */
+
+.table td,
+.appointment-table td,
+.patient-table td,
+.imaging-table td,
+.activity-table td,
+.report-table td {
+    padding: 14px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--cm-border);
+    color: var(--cm-text);
+}
+
+.table tbody tr:last-child td,
+.appointment-table tbody tr:last-child td,
+.patient-table tbody tr:last-child td,
+.imaging-table tbody tr:last-child td,
+.activity-table tbody tr:last-child td,
+.report-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* ----- TABLE HOVER STATE ----- */
+
+.table tbody tr:hover,
+.appointment-table tbody tr:hover,
+.patient-table tbody tr:hover,
+.imaging-table tbody tr:hover,
+.activity-table tbody tr:hover,
+.report-table tbody tr:hover {
+    background: var(--cm-surface-muted);
+}
+
+/* ----- TABLE ROW CLASSES ----- */
+
+.table tbody tr.is-selected,
+.appointment-table tbody tr.is-selected,
+.patient-table tbody tr.is-selected,
+.imaging-table tbody tr.is-selected,
+.activity-table tbody tr.is-selected,
+.report-table tbody tr.is-selected {
+    background: var(--cm-primary-soft);
+}
+
+.table tbody tr.is-disabled,
+.appointment-table tbody tr.is-disabled,
+.patient-table tbody tr.is-disabled,
+.imaging-table tbody tr.is-disabled,
+.activity-table tbody tr.is-disabled,
+.report-table tbody tr.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ----- TABLE ACTIONS ----- */
+
+.table-actions {
+    display: flex;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.table-action-btn {
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    color: var(--cm-primary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: color var(--cm-transition-base);
+}
+
+.table-action-btn:hover {
+    color: var(--cm-primary-dark);
+}
+
+/* ----- TABLE EMPTY STATE ----- */
+
+.table-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--cm-text-secondary);
+}
+
+.table-empty-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.table-empty-title {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cm-text);
+}
+
+.table-empty-text {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* ----- TABLE LOADING ----- */
+
+.table.is-loading tbody tr {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ----- TABLE SKELETON ----- */
+
+.table-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.table-skeleton-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--cm-border);
+}
+
+.table-skeleton-cell {
+    height: 20px;
+    background: linear-gradient(
+        90deg,
+        var(--cm-surface-muted) 0%,
+        var(--cm-surface) 50%,
+        var(--cm-surface-muted) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 4px;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ----- RESPONSIVE TABLE ----- */
+
+@media (max-width: 850px) {
+    .table,
+    .appointment-table,
+    .patient-table,
+    .imaging-table,
+    .activity-table,
+    .report-table {
+        font-size: 12px;
+    }
+
+    .table th,
+    .appointment-table th,
+    .patient-table th,
+    .imaging-table th,
+    .activity-table th,
+    .report-table th {
+        padding: 10px 8px;
+        font-size: 10px;
+    }
+
+    .table td,
+    .appointment-table td,
+    .patient-table td,
+    .imaging-table td,
+    .activity-table td,
+    .report-table td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .table-wrapper,
+    .appointment-table-wrapper,
+    .patient-table-wrapper,
+    .imaging-table-wrapper,
+    .activity-table-wrapper,
+    .report-table-wrapper {
+        border: 0;
+        background: transparent;
+    }
+
+    .table,
+    .appointment-table,
+    .patient-table,
+    .imaging-table,
+    .activity-table,
+    .report-table {
+        font-size: 12px;
+    }
+
+    .table th,
+    .appointment-table th,
+    .patient-table th,
+    .imaging-table th,
+    .activity-table th,
+    .report-table th {
+        display: none;
+    }
+
+    .table tbody,
+    .appointment-table tbody,
+    .patient-table tbody,
+    .imaging-table tbody,
+    .activity-table tbody,
+    .report-table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .table tbody tr,
+    .appointment-table tbody tr,
+    .patient-table tbody tr,
+    .imaging-table tbody tr,
+    .activity-table tbody tr,
+    .report-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--cm-border);
+        border-radius: var(--cm-radius-md);
+        background: var(--cm-surface);
+        border-bottom: 1px solid var(--cm-border);
+    }
+
+    .table tbody tr:hover,
+    .appointment-table tbody tr:hover,
+    .patient-table tbody tr:hover,
+    .imaging-table tbody tr:hover,
+    .activity-table tbody tr:hover,
+    .report-table tbody tr:hover {
+        background: var(--cm-surface);
+        border-color: var(--cm-primary);
+    }
+
+    .table td,
+    .appointment-table td,
+    .patient-table td,
+    .imaging-table td,
+    .activity-table td,
+    .report-table td {
+        padding: 0;
+        border-bottom: 0;
+        border: 0;
+    }
+
+    .table td::before,
+    .appointment-table td::before,
+    .patient-table td::before,
+    .imaging-table td::before,
+    .activity-table td::before,
+    .report-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+        color: var(--cm-text);
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+}

@@ -1,0 +1,311 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    Patients | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    Patients
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/patients.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="patients-page">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                Patients
+            </h1>
+
+            <p class="page-description">
+                Manage and review patient information securely.
+            </p>
+
+        </div>
+
+        <a
+    href="{% url 'web:add-patient' %}"
+    class="primary-button"
+>
+    + Add Patient
+</a>
+
+    </div>
+
+
+    <!-- Patient Statistics -->
+
+    <section class="patient-stats">
+
+        <article class="patient-stat-card">
+
+            <span class="patient-stat-label">
+                Total Patients
+            </span>
+
+            <strong class="patient-stat-value">
+                {{ total_patients }}
+            </strong>
+
+        </article>
+
+
+        <article class="patient-stat-card">
+
+            <span class="patient-stat-label">
+                Active Patients
+            </span>
+
+            <strong class="patient-stat-value">
+                {{ active_patients }}
+            </strong>
+
+        </article>
+
+
+        <article class="patient-stat-card">
+
+            <span class="patient-stat-label">
+                New This Month
+            </span>
+
+            <strong class="patient-stat-value">
+                {{ new_this_month }}
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Patient Directory -->
+
+    <section class="dashboard-card">
+
+        <div class="patients-toolbar">
+
+            <div>
+
+                <h2>
+                    Patient Directory
+                </h2>
+
+                <p>
+                    Authorized patient records.
+                </p>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <form
+                method="get"
+                class="patient-search"
+            >
+
+                <input
+                    type="search"
+                    name="search"
+                    value="{{ search_query }}"
+                    placeholder="Search patients..."
+                    aria-label="Search patients"
+                >
+
+            </form>
+
+        </div>
+
+
+        <!-- Patient Table -->
+
+        <div class="patient-table-wrapper">
+
+            <table class="patient-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Patient ID
+                        </th>
+
+                        <th>
+                            Age
+                        </th>
+
+                        <th>
+                            Department
+                        </th>
+
+                        <th>
+                            Last Visit
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for patient in patients %}
+
+                    <tr>
+
+                        <!-- Patient -->
+
+                        <td>
+
+                            <div class="patient-name">
+
+                                <div class="patient-avatar">
+
+                                    {% if patient.name %}
+
+                                        {{ patient.name|slice:":1"|upper }}
+
+                                    {% else %}
+
+                                        ?
+
+                                    {% endif %}
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        {{ patient.name }}
+                                    </strong>
+
+                                    <span>
+                                        {{ patient.email }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- Patient ID -->
+
+                        <td>
+
+                            {{ patient.patient_id }}
+
+                        </td>
+
+
+                        <!-- Age -->
+
+                        <td>
+
+                            {% if patient.age %}
+                                {{ patient.age }}
+                            {% else %}
+                                —
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- Department -->
+
+                        <td>
+
+                            {{ patient.department }}
+
+                        </td>
+
+
+                        <!-- Last Visit -->
+
+                        <td>
+
+                            {% if patient.last_visit %}
+
+                                {{ patient.last_visit|date:"d M Y" }}
+
+                            {% else %}
+
+                                No visits
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- Status -->
+
+                        <td>
+
+                            <span
+                                class="patient-status {{ patient.status_class }}"
+                            >
+                                {{ patient.status }}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            style="text-align: center;"
+                        >
+
+                            No patients found.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
