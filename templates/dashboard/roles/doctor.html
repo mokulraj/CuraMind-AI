@@ -1,0 +1,344 @@
+{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block title %}
+    Doctor Dashboard | CuraMind AI
+{% endblock %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        P
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Patients
+        </span>
+
+        <strong class="role-stat-value">
+            128
+        </strong>
+
+        <span class="role-stat-meta">
+            Assigned patients
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        A
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Appointments
+        </span>
+
+        <strong class="role-stat-value">
+            18
+        </strong>
+
+        <span class="role-stat-meta">
+            Today's appointments
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        AI
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            AI Insights
+        </span>
+
+        <strong class="role-stat-value">
+            7
+        </strong>
+
+        <span class="role-stat-meta">
+            Pending insights
+        </span>
+
+    </div>
+
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+
+    <!-- =====================================================
+         TODAY'S APPOINTMENTS
+         ===================================================== -->
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+
+                <span class="role-panel-eyebrow">
+                    SCHEDULE
+                </span>
+
+                <h2>
+                    Today's Appointments
+                </h2>
+
+                <p>
+                    Your scheduled clinical appointments for today.
+                </p>
+
+            </div>
+
+            <a
+                href="{% url 'web:appointments' %}"
+                class="role-panel-link"
+            >
+                View all
+            </a>
+
+        </div>
+
+
+        <div class="role-list">
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    09:00
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        General Consultation
+                    </strong>
+
+                    <span>
+                        Patient consultation
+                    </span>
+
+                </div>
+
+                <span class="role-status role-status-primary">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    11:30
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        Follow-up Consultation
+                    </strong>
+
+                    <span>
+                        Clinical follow-up
+                    </span>
+
+                </div>
+
+                <span class="role-status">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    15:00
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        Medical Review
+                    </strong>
+
+                    <span>
+                        Patient medical review
+                    </span>
+
+                </div>
+
+                <span class="role-status">
+                    Today
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         AI INSIGHTS
+         ===================================================== -->
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+
+                <span class="role-panel-eyebrow">
+                    AI
+                </span>
+
+                <h2>
+                    AI Insights
+                </h2>
+
+                <p>
+                    Clinical insights requiring your attention.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+
+            <div class="health-item">
+
+                <span>
+                    Pending Insights
+                </span>
+
+                <strong>
+                    7
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    Patients Reviewed
+                </span>
+
+                <strong>
+                    24
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    Reports Generated
+                </span>
+
+                <strong>
+                    11
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </article>
+
+
+</div>
+
+
+<!-- =========================================================
+     QUICK ACTIONS
+     ========================================================= -->
+
+<div class="role-quick-actions">
+
+
+    <a
+        href="{% url 'web:appointments' %}"
+        class="role-action-card"
+    >
+
+        <strong>
+            Appointments
+        </strong>
+
+        <span>
+            Manage your clinical schedule
+        </span>
+
+    </a>
+
+
+    <a
+        href="{% url 'web:medical-records' %}"
+        class="role-action-card"
+    >
+
+        <strong>
+            Medical Records
+        </strong>
+
+        <span>
+            Review patient clinical records
+        </span>
+
+    </a>
+
+
+    <a
+        href="{% url 'web:reports' %}"
+        class="role-action-card"
+    >
+
+        <strong>
+            Clinical Reports
+        </strong>
+
+        <span>
+            Review generated reports
+        </span>
+
+    </a>
+
+
+</div>
+
+{% endblock %}

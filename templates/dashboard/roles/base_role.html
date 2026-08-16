@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'css/dashboard.css' %}"
+>
+{% block role_css %}
+{% endblock %}
+{% endblock %}
+
+
+{% block content %}
+
+<section
+    class="role-dashboard role-dashboard-{{ current_role|lower }}"
+    data-role="{{ current_role }}"
+>
+
+    <header class="role-dashboard-header">
+
+        <div class="role-dashboard-heading">
+
+            <span class="role-dashboard-eyebrow">
+                {{ role_eyebrow|default:"CURAMIND AI" }}
+            </span>
+
+            <h1 class="role-dashboard-title">
+                {{ dashboard_title }}
+            </h1>
+
+            <p class="role-dashboard-description">
+                {{ dashboard_description }}
+            </p>
+
+        </div>
+
+
+        <div class="role-dashboard-actions">
+
+            {% block header_actions %}
+            {% endblock %}
+
+        </div>
+
+    </header>
+
+
+    <section
+        class="role-dashboard-stats"
+        aria-label="Dashboard statistics"
+    >
+
+        {% block statistics %}
+        {% endblock %}
+
+    </section>
+
+
+    <section class="role-dashboard-content">
+
+        {% block dashboard_content %}
+        {% endblock %}
+
+    </section>
+
+</section>
+
+{% endblock %}

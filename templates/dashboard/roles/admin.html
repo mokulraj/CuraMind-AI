@@ -1,0 +1,273 @@
+﻿{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        U
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Users
+        </span>
+
+        <strong class="role-stat-value">
+            66
+        </strong>
+
+        <span class="role-stat-meta">
+            Registered users
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        P
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Patients
+        </span>
+
+        <strong class="role-stat-value">
+            1,248
+        </strong>
+
+        <span class="role-stat-meta">
+            Registered patients
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        A
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Appointments
+        </span>
+
+        <strong class="role-stat-value">
+            86
+        </strong>
+
+        <span class="role-stat-meta">
+            Scheduled appointments
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        ✓
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            System Status
+        </span>
+
+        <strong class="role-stat-value">
+            OK
+        </strong>
+
+        <span class="role-stat-meta">
+            Core services operational
+        </span>
+
+    </div>
+
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+
+                <span class="role-panel-eyebrow">
+                    ADMINISTRATION
+                </span>
+
+                <h2>
+                    System Overview
+                </h2>
+
+                <p>
+                    Monitor the CuraMind AI healthcare platform.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+
+                <span>
+                    Registered Users
+                </span>
+
+                <strong>
+                    66
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    Active Patients
+                </span>
+
+                <strong>
+                    1,248
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    System Status
+                </span>
+
+                <strong>
+                    Operational
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+
+                <span class="role-panel-eyebrow">
+                    OPERATIONS
+                </span>
+
+                <h2>
+                    Administrative Activity
+                </h2>
+
+                <p>
+                    Manage the healthcare platform and its users.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+
+                    <strong>
+                        User Management
+                    </strong>
+
+                    <span>
+                        Manage platform users and access.
+                    </span>
+
+                </div>
+
+                <span class="role-status role-status-primary">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+
+                    <strong>
+                        Healthcare Operations
+                    </strong>
+
+                    <span>
+                        Monitor appointments and clinical activity.
+                    </span>
+
+                </div>
+
+                <span class="role-status">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+
+                    <strong>
+                        System Services
+                    </strong>
+
+                    <span>
+                        Core CuraMind services are operational.
+                    </span>
+
+                </div>
+
+                <span class="role-status role-status-primary">
+                    OK
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}

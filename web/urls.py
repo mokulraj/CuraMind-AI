@@ -2,23 +2,25 @@ from django.urls import path
 
 from .views import (
     home,
-    login_page,
-    notifications_page,
-    password_change_page,
-)
-from .views import (
-    home,
     appointments,
+    new_appointment,
+    cancel_appointment,
+    confirm_appointment,
+    start_appointment,
+    complete_appointment,
     patients,
     add_patient,
     ai_insights,
     medical_records,
-    imaging,
+    medical_record_detail,
     reports,
     settings_page,
     login_page,
     password_change_page,
     logout_view,
+    notifications_page,
+    create_clinical_note,
+    sign_clinical_note,
 )
 
 
@@ -27,14 +29,20 @@ app_name = "web"
 
 urlpatterns = [
 
-    # Dashboard
+    # --------------------------------------------------
+    # DASHBOARD
+    # --------------------------------------------------
+
     path(
         "",
         home,
         name="home",
     ),
 
-    # Patients
+    # --------------------------------------------------
+    # PATIENTS
+    # --------------------------------------------------
+
     path(
         "patients/",
         patients,
@@ -47,55 +55,122 @@ urlpatterns = [
         name="add-patient",
     ),
 
-    # Appointments
+    # --------------------------------------------------
+    # APPOINTMENTS
+    # --------------------------------------------------
+
     path(
         "appointments/",
         appointments,
         name="appointments",
     ),
 
-    # AI Insights
+    path(
+        "appointments/new/",
+        new_appointment,
+        name="appointment-new",
+    ),
+
+    path(
+        "appointments/<uuid:appointment_id>/cancel/",
+        cancel_appointment,
+        name="appointment-cancel",
+    ),
+
+    path(
+        "appointments/<uuid:appointment_id>/confirm/",
+        confirm_appointment,
+        name="appointment-confirm",
+    ),
+
+    path(
+        "appointments/<uuid:appointment_id>/start/",
+        start_appointment,
+        name="appointment-start",
+    ),
+
+    path(
+        "appointments/<uuid:appointment_id>/complete/",
+        complete_appointment,
+        name="appointment-complete",
+    ),
+    
+        # --------------------------------------------------
+    # CLINICAL NOTES
+    # --------------------------------------------------
+
+    path(
+        "medical-records/<uuid:record_id>/encounters/<uuid:encounter_id>/notes/create/",
+        create_clinical_note,
+        name="clinical-note-create",
+    ),
+
+    path(
+        "medical-records/<uuid:record_id>/notes/<uuid:note_id>/sign/",
+        sign_clinical_note,
+        name="clinical-note-sign",
+    ),
+
+    # --------------------------------------------------
+    # AI INSIGHTS
+    # --------------------------------------------------
+
     path(
         "ai-insights/",
         ai_insights,
         name="ai-insights",
     ),
 
-    # Medical Records
+    # --------------------------------------------------
+    # MEDICAL RECORDS
+    # --------------------------------------------------
+
     path(
         "medical-records/",
         medical_records,
         name="medical-records",
     ),
 
-    # Imaging
     path(
-        "imaging/",
-        imaging,
-        name="imaging",
+        "medical-records/<uuid:record_id>/",
+        medical_record_detail,
+        name="medical-record-detail",
     ),
-    
-    path(
-    "notifications/",
-    notifications_page,
-    name="notifications",
-),
 
-    # Reports
+    # --------------------------------------------------
+    # NOTIFICATIONS
+    # --------------------------------------------------
+
+    path(
+        "notifications/",
+        notifications_page,
+        name="notifications",
+    ),
+
+    # --------------------------------------------------
+    # REPORTS
+    # --------------------------------------------------
+
     path(
         "reports/",
         reports,
         name="reports",
     ),
 
-    # Settings
+    # --------------------------------------------------
+    # SETTINGS
+    # --------------------------------------------------
+
     path(
         "settings/",
         settings_page,
         name="settings",
     ),
 
-    # Authentication
+    # --------------------------------------------------
+    # AUTHENTICATION
+    # --------------------------------------------------
+
     path(
         "login/",
         login_page,

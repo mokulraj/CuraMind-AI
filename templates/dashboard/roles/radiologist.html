@@ -1,0 +1,208 @@
+﻿{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">I</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Imaging Studies</span>
+
+        <strong class="role-stat-value">
+            18
+        </strong>
+
+        <span class="role-stat-meta">
+            Studies in worklist
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">AI</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">AI Findings</span>
+
+        <strong class="role-stat-value">
+            6
+        </strong>
+
+        <span class="role-stat-meta">
+            Awaiting review
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">R</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Reports</span>
+
+        <strong class="role-stat-value">
+            11
+        </strong>
+
+        <span class="role-stat-meta">
+            Reports pending
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">✓</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">AI Review</span>
+
+        <strong class="role-stat-value">
+            6
+        </strong>
+
+        <span class="role-stat-meta">
+            Findings awaiting review
+        </span>
+    </div>
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    RADIOLOGY
+                </span>
+
+                <h2>
+                    Imaging Worklist
+                </h2>
+
+                <p>
+                    Review imaging studies and AI-assisted findings.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Imaging Studies
+                    </strong>
+
+                    <span>
+                        Studies currently available in the worklist.
+                    </span>
+                </div>
+
+                <span class="role-status role-status-primary">
+                    18
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        AI Findings
+                    </strong>
+
+                    <span>
+                        AI-assisted findings awaiting review.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    6
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Reports
+                    </strong>
+
+                    <span>
+                        Radiology reports pending completion.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    11
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    AI ANALYSIS
+                </span>
+
+                <h2>
+                    AI Findings
+                </h2>
+
+                <p>
+                    Review AI-assisted radiology findings.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+                <span>Studies</span>
+                <strong>18</strong>
+            </div>
+
+            <div class="health-item">
+                <span>AI Findings</span>
+                <strong>6</strong>
+            </div>
+
+            <div class="health-item">
+                <span>Reports</span>
+                <strong>11</strong>
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}

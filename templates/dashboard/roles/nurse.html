@@ -1,0 +1,204 @@
+﻿{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">P</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Patients</span>
+
+        <strong class="role-stat-value">
+            32
+        </strong>
+
+        <span class="role-stat-meta">
+            Patients under care
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">T</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Tasks</span>
+
+        <strong class="role-stat-value">
+            9
+        </strong>
+
+        <span class="role-stat-meta">
+            Pending tasks
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">V</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Vitals</span>
+
+        <strong class="role-stat-value">
+            16
+        </strong>
+
+        <span class="role-stat-meta">
+            Updates required
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">A</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Appointments</span>
+
+        <strong class="role-stat-value">
+            12
+        </strong>
+
+        <span class="role-stat-meta">
+            Today's appointments
+        </span>
+    </div>
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    PATIENT CARE
+                </span>
+
+                <h2>
+                    Nursing Activity
+                </h2>
+
+                <p>
+                    Review current patient care activities.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Patient Care
+                    </strong>
+
+                    <span>
+                        32 patients currently under care.
+                    </span>
+                </div>
+
+                <span class="role-status role-status-primary">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Pending Tasks
+                    </strong>
+
+                    <span>
+                        Review and complete assigned nursing tasks.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    9 Pending
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    VITALS
+                </span>
+
+                <h2>
+                    Patient Vitals
+                </h2>
+
+                <p>
+                    Monitor recent vital-sign updates.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+                <span>
+                    Updates Required
+                </span>
+
+                <strong>
+                    16
+                </strong>
+            </div>
+
+            <div class="health-item">
+                <span>
+                    Patients
+                </span>
+
+                <strong>
+                    32
+                </strong>
+            </div>
+
+            <div class="health-item">
+                <span>
+                    Tasks
+                </span>
+
+                <strong>
+                    9
+                </strong>
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}

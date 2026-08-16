@@ -1,0 +1,271 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    New Appointment | CuraMind AI
+{% endblock %}
+
+{% block page_heading %}
+    New Appointment
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/appointments.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="appointments-page">
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="page-eyebrow">
+                CURAMIND AI
+            </div>
+
+            <h1 class="page-title">
+                New Appointment
+            </h1>
+
+            <p class="page-description">
+                Schedule a secure healthcare appointment.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <section class="dashboard-card">
+
+        <div class="dashboard-card-header">
+
+            <div>
+
+                <h2>
+                    Appointment Details
+                </h2>
+
+                <p>
+                    Select your healthcare provider,
+                    date and consultation preferences.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if form.non_field_errors %}
+
+            <div class="form-error">
+
+                {% for error in form.non_field_errors %}
+
+                    <p>
+                        {{ error }}
+                    </p>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+
+        <form
+            method="post"
+            class="appointment-form"
+        >
+
+            {% csrf_token %}
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="{{ form.organization.id_for_label }}">
+                        Healthcare Organization
+                    </label>
+
+                    {{ form.organization }}
+
+                    {% for error in form.organization.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="{{ form.department.id_for_label }}">
+                        Department
+                    </label>
+
+                    {{ form.department }}
+
+                    {% for error in form.department.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="{{ form.doctor.id_for_label }}">
+                        Doctor
+                    </label>
+
+                    {{ form.doctor }}
+
+                    {% for error in form.doctor.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="{{ form.appointment_type.id_for_label }}">
+                        Appointment Type
+                    </label>
+
+                    {{ form.appointment_type }}
+
+                    {% for error in form.appointment_type.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="{{ form.consultation_mode.id_for_label }}">
+                        Consultation Mode
+                    </label>
+
+                    {{ form.consultation_mode }}
+
+                    {% for error in form.consultation_mode.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="{{ form.scheduled_start.id_for_label }}">
+                        Date & Time
+                    </label>
+
+                    {{ form.scheduled_start }}
+
+                    {% for error in form.scheduled_start.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group form-group-full">
+
+                    <label for="{{ form.reason.id_for_label }}">
+                        Reason for Appointment
+                    </label>
+
+                    {{ form.reason }}
+
+                    {% for error in form.reason.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="form-group form-group-full">
+
+                    <label for="{{ form.symptoms.id_for_label }}">
+                        Symptoms
+                    </label>
+
+                    {{ form.symptoms }}
+
+                    {% for error in form.symptoms.errors %}
+
+                        <span class="form-field-error">
+                            {{ error }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="appointment-form-actions">
+
+                <a
+                    href="{% url 'web:appointments' %}"
+                    class="secondary-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Book Appointment
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,338 @@
+{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        A
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Upcoming Appointments
+        </span>
+
+        <strong class="role-stat-value">
+            12
+        </strong>
+
+        <span class="role-stat-meta">
+            Scheduled visits
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        M
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Medical Records
+        </span>
+
+        <strong class="role-stat-value">
+            24
+        </strong>
+
+        <span class="role-stat-meta">
+            Available records
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        R
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            Reports
+        </span>
+
+        <strong class="role-stat-value">
+            3
+        </strong>
+
+        <span class="role-stat-meta">
+            Available reports
+        </span>
+
+    </div>
+
+</article>
+
+
+<article class="role-stat-card">
+
+    <div class="role-stat-icon">
+        AI
+    </div>
+
+    <div class="role-stat-body">
+
+        <span class="role-stat-label">
+            AI Insights
+        </span>
+
+        <strong class="role-stat-value">
+            5
+        </strong>
+
+        <span class="role-stat-meta">
+            Health insights
+        </span>
+
+    </div>
+
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    SCHEDULE
+                </span>
+
+                <h2>
+                    Upcoming Appointments
+                </h2>
+
+                <p>
+                    Your next scheduled healthcare visits.
+                </p>
+            </div>
+
+            <a
+                href="{% url 'web:appointments' %}"
+                class="role-panel-link"
+            >
+                View all
+            </a>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    09:30
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        General Consultation
+                    </strong>
+
+                    <span>
+                        Dr. Healthcare Professional
+                    </span>
+
+                </div>
+
+                <span class="role-status role-status-primary">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    11:00
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        Follow-up Consultation
+                    </strong>
+
+                    <span>
+                        Clinical Department
+                    </span>
+
+                </div>
+
+                <span class="role-status">
+                    Tomorrow
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-time">
+                    15:30
+                </div>
+
+                <div class="role-list-content">
+
+                    <strong>
+                        Medical Review
+                    </strong>
+
+                    <span>
+                        Healthcare Team
+                    </span>
+
+                </div>
+
+                <span class="role-status">
+                    Friday
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+
+                <span class="role-panel-eyebrow">
+                    HEALTH
+                </span>
+
+                <h2>
+                    Health Overview
+                </h2>
+
+                <p>
+                    Your latest healthcare activity.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+
+                <span>
+                    Medical Records
+                </span>
+
+                <strong>
+                    24
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    Reports
+                </span>
+
+                <strong>
+                    3
+                </strong>
+
+            </div>
+
+
+            <div class="health-item">
+
+                <span>
+                    Imaging Studies
+                </span>
+
+                <strong>
+                    5
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+</div>
+
+
+<div class="role-quick-actions">
+
+    <a
+        href="{% url 'web:appointments' %}"
+        class="role-action-card"
+    >
+        <strong>
+            Book Appointment
+        </strong>
+
+        <span>
+            Schedule your next visit
+        </span>
+    </a>
+
+
+    <a
+        href="{% url 'web:medical-records' %}"
+        class="role-action-card"
+    >
+        <strong>
+            Medical Records
+        </strong>
+
+        <span>
+            Review your clinical history
+        </span>
+    </a>
+
+
+    <a
+        href="{% url 'web:reports' %}"
+        class="role-action-card"
+    >
+        <strong>
+            View Reports
+        </strong>
+
+        <span>
+            Access available reports
+        </span>
+    </a>
+
+</div>
+
+{% endblock %}

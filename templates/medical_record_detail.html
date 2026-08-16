@@ -1,0 +1,1058 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/medical-records.css' %}"
+>
+
+{% endblock %}
+{% block content %}
+
+<div class="medical-record-page">
+
+    <!-- ============================================== -->
+    <!-- HEADER -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-header">
+
+        <div>
+            <span class="medical-record-eyebrow">
+                Medical Record
+            </span>
+
+            <h1>
+                {{ record.record_number }}
+            </h1>
+
+            <p>
+                {{ record.patient.user.full_name }}
+            </p>
+        </div>
+
+        <div class="medical-record-status">
+            {{ record.get_status_display }}
+        </div>
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- BASIC INFORMATION -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Record Information</h2>
+        </div>
+
+        <div class="medical-record-info-grid">
+
+            <div>
+                <span>Record Number</span>
+                <strong>
+                    {{ record.record_number }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Patient</span>
+                <strong>
+                    {{ record.patient.user.full_name }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Status</span>
+                <strong>
+                    {{ record.get_status_display }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Primary Physician</span>
+
+                <strong>
+                    {% if record.primary_physician %}
+                        {{ record.primary_physician.user.full_name }}
+                    {% else %}
+                        Not assigned
+                    {% endif %}
+                </strong>
+            </div>
+
+        </div>
+
+        {% if record.summary %}
+
+            <div class="medical-record-summary">
+
+                <span>Summary</span>
+
+                <p>
+                    {{ record.summary }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- CLINICAL ENCOUNTERS -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+
+            <div>
+                <span class="medical-record-section-label">
+                    Clinical History
+                </span>
+
+                <h2>Clinical Encounters</h2>
+            </div>
+
+            <span>
+                {{ encounters|length }}
+            </span>
+
+        </div>
+
+
+        {% if encounters %}
+
+            <div class="medical-record-list">
+
+                {% for encounter in summary.encounters %}
+
+                    <article class="medical-record-item">
+
+                        <div class="medical-record-item-header">
+
+                            <div>
+                                <h3>
+                                    {{ encounter.get_encounter_type_display }}
+                                </h3>
+
+                                <span>
+                                    {{ encounter.started_at|date:"M d, Y H:i" }}
+                                </span>
+                            </div>
+
+                            <span>
+                                {{ encounter.get_status_display }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="medical-record-info-grid">
+
+                            <div>
+                                <span>Attending Doctor</span>
+
+                                <strong>
+                                    {{ encounter.attending_doctor.user.full_name }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Chief Complaint</span>
+
+                                <strong>
+                                    {% if encounter.chief_complaint %}
+                                        {{ encounter.chief_complaint }}
+                                    {% else %}
+                                        Not recorded
+                                    {% endif %}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        {% if encounter.history_of_present_illness %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>
+                                    History of Present Illness
+                                </span>
+
+                                <p>
+                                    {{ encounter.history_of_present_illness }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+
+                        {% if encounter.clinical_summary %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>
+                                    Clinical Summary
+                                </span>
+
+                                <p>
+                                    {{ encounter.clinical_summary }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+
+                        {% if encounter.examination_notes %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>
+                                    Examination Notes
+                                </span>
+
+                                <p>
+                                    {{ encounter.examination_notes }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+
+                        {% if encounter.treatment_plan %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>
+                                    Treatment Plan
+                                </span>
+
+                                <p>
+                                    {{ encounter.treatment_plan }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="medical-record-empty">
+                No clinical encounters recorded.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- DIAGNOSES -->
+
+
+    <!-- ============================================== -->
+<!-- DIAGNOSES -->
+<!-- ============================================== -->
+
+
+
+    {% if diagnoses %}
+
+        <div class="medical-record-list">
+
+            {% for diagnosis in diagnoses %}
+
+                <article class="medical-record-item">
+
+                    <div class="medical-record-item-header">
+
+                        <div>
+
+                            <h3>
+                                {{ diagnosis.description }}
+                            </h3>
+
+                            <span>
+                                {{ diagnosis.diagnosed_at|date:"M d, Y H:i" }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="medical-record-info-grid">
+
+                        <div>
+                            <span>Diagnosis Code</span>
+
+                            <strong>
+                                {{ diagnosis.code }}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Type</span>
+
+                            <strong>
+                                {{ diagnosis.get_diagnosis_type_display }}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Status</span>
+
+                            <strong>
+                                {{ diagnosis.get_status_display }}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Diagnosed By</span>
+
+                            <strong>
+                                {{ diagnosis.diagnosed_by.user.full_name }}
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    {% if diagnosis.clinical_notes %}
+
+                        <div class="medical-record-text-block">
+
+                            <span>Clinical Notes</span>
+
+                            <p>
+                                {{ diagnosis.clinical_notes }}
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="medical-record-empty">
+            No diagnoses recorded.
+        </div>
+
+    {% endif %}
+
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Diagnoses</h2>
+        </div>
+
+
+        {% if diagnoses %}
+
+            <div class="medical-record-list">
+
+                {% for diagnosis in diagnoses %}
+
+                    <article class="medical-record-item">
+
+                        <div class="medical-record-item-header">
+
+                            <div>
+
+                                <h3>
+                                    {{ diagnosis.code }}
+                                </h3>
+
+                                <span>
+                                    {{ diagnosis.description }}
+                                </span>
+
+                            </div>
+
+                            <span>
+                                {{ diagnosis.get_status_display }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="medical-record-info-grid">
+
+                            <div>
+                                <span>Type</span>
+                                <strong>
+                                    {{ diagnosis.get_diagnosis_type_display }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Diagnosed By</span>
+                                <strong>
+                                    {{ diagnosis.diagnosed_by.user.full_name }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Diagnosed At</span>
+                                <strong>
+                                    {{ diagnosis.diagnosed_at|date:"M d, Y H:i" }}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        {% if diagnosis.clinical_notes %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>Clinical Notes</span>
+
+                                <p>
+                                    {{ diagnosis.clinical_notes }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="medical-record-empty">
+                No diagnoses recorded.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- ALLERGIES -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Allergies</h2>
+        </div>
+
+
+        {% if allergies %}
+
+            <div class="medical-record-list">
+
+                {% for allergy in allergies %}
+
+                    <article class="medical-record-item">
+
+                        <div class="medical-record-item-header">
+
+                            <div>
+                                <h3>
+                                    {{ allergy.allergen }}
+                                </h3>
+
+                                <span>
+                                    {{ allergy.reaction|default:"Reaction not recorded" }}
+                                </span>
+                            </div>
+
+                            <span>
+                                {{ allergy.get_severity_display }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="medical-record-info-grid">
+
+                            <div>
+                                <span>Status</span>
+
+                                <strong>
+                                    {{ allergy.get_status_display }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Recorded By</span>
+
+                                <strong>
+                                    {{ allergy.recorded_by.user.full_name }}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        {% if allergy.notes %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>Notes</span>
+
+                                <p>
+                                    {{ allergy.notes }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="medical-record-empty">
+                No allergies recorded.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- MEDICATIONS -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Medications</h2>
+        </div>
+
+
+        {% if medications %}
+
+            <div class="medical-record-list">
+
+                {% for medication in medications %}
+
+                    <article class="medical-record-item">
+
+                        <div class="medical-record-item-header">
+
+                            <div>
+
+                                <h3>
+                                    {{ medication.medication_name }}
+                                </h3>
+
+                                <span>
+                                    {{ medication.generic_name|default:"Generic name not recorded" }}
+                                </span>
+
+                            </div>
+
+                            <span>
+                                {{ medication.get_status_display }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="medical-record-info-grid">
+
+                            <div>
+                                <span>Dosage</span>
+                                <strong>
+                                    {{ medication.dosage }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Route</span>
+                                <strong>
+                                    {{ medication.route }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Frequency</span>
+                                <strong>
+                                    {{ medication.frequency }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Duration</span>
+                                <strong>
+                                    {{ medication.duration|default:"Not specified" }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Prescribed By</span>
+                                <strong>
+                                    {{ medication.prescribed_by.user.full_name }}
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Prescribed At</span>
+                                <strong>
+                                    {{ medication.prescribed_at|date:"M d, Y H:i" }}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        {% if medication.instructions %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>Instructions</span>
+
+                                <p>
+                                    {{ medication.instructions }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="medical-record-empty">
+                No medications recorded.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- VITAL SIGNS -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Vital Signs</h2>
+        </div>
+
+
+        {% if vital_signs %}
+
+            <div class="medical-record-list">
+
+                {% for vital in vital_signs %}
+
+                    <article class="medical-record-item">
+
+                        <div class="medical-record-item-header">
+
+                            <div>
+
+                                <h3>
+                                    Vital Signs
+                                </h3>
+
+                                <span>
+                                    {{ vital.recorded_at|date:"M d, Y H:i" }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="medical-record-info-grid">
+
+                            {% if vital.temperature_celsius %}
+                                <div>
+                                    <span>Temperature</span>
+                                    <strong>
+                                       {{ vital.temperature_celsius }} &deg;C
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.heart_rate_bpm %}
+                                <div>
+                                    <span>Heart Rate</span>
+                                    <strong>
+                                        {{ vital.heart_rate_bpm }} bpm
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.respiratory_rate_bpm %}
+                                <div>
+                                    <span>Respiratory Rate</span>
+                                    <strong>
+                                        {{ vital.respiratory_rate_bpm }} /min
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.systolic_bp_mmhg %}
+                                <div>
+                                    <span>Blood Pressure</span>
+                                    <strong>
+                                        {{ vital.systolic_bp_mmhg }}/{{ vital.diastolic_bp_mmhg }} mmHg
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.oxygen_saturation_percent %}
+                                <div>
+                                    <span>Oxygen Saturation</span>
+                                    <strong>
+                                        {{ vital.oxygen_saturation_percent }} %
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.weight_kg %}
+                                <div>
+                                    <span>Weight</span>
+                                    <strong>
+                                        {{ vital.weight_kg }} kg
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                            {% if vital.height_cm %}
+                                <div>
+                                    <span>Height</span>
+                                    <strong>
+                                        {{ vital.height_cm }} cm
+                                    </strong>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        {% if vital.notes %}
+
+                            <div class="medical-record-text-block">
+
+                                <span>Notes</span>
+
+                                <p>
+                                    {{ vital.notes }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="medical-record-empty">
+                No vital signs recorded.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- ============================================== -->
+    <!-- CLINICAL NOTES -->
+    <!-- ============================================== -->
+
+    <section class="medical-record-card">
+
+        <div class="medical-record-card-header">
+            <h2>Clinical Notes</h2>
+        </div>
+
+       {% if encounters %}
+    <div class="clinical-note-create">
+
+        <h3>Add Clinical Note</h3>
+
+        {% for encounter in encounters %}
+
+            {% if encounter.status != "COMPLETED" %}
+
+                <form
+                    method="post"
+                    action="{% url 'web:clinical-note-create'
+                    record_id=medical_record.id
+                    encounter_id=encounter.id
+                %}"
+                >
+
+                    {% csrf_token %}
+
+                    <div>
+                        <label
+                            for="note_type_{{ encounter.id }}"
+                        >
+                            Note Type
+                        </label>
+
+                        <select
+                            id="note_type_{{ encounter.id }}"
+                            name="note_type"
+                            required
+                        >
+
+                            <option value="PROGRESS">
+                                Progress Note
+                            </option>
+
+                            <option value="CONSULTATION">
+                                Consultation
+                            </option>
+
+                            <option value="FOLLOW_UP">
+                                Follow-up
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label
+                            for="content_{{ encounter.id }}"
+                        >
+                            Clinical Note
+                        </label>
+
+                        <textarea
+                            id="content_{{ encounter.id }}"
+                            name="content"
+                            rows="6"
+                            required
+                            placeholder="Enter clinical observations, assessment, or plan..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Save Clinical Note
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <p>
+                    This encounter is completed.
+                    New clinical notes cannot be added.
+                </p>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+{% endif %}
+
+       {% if clinical_notes %}
+
+    <div class="medical-record-list">
+
+        {% for note in clinical_notes %}
+
+            <article class="medical-record-item">
+
+                <div class="medical-record-item-header">
+
+                    <div>
+
+                        <h3>
+                            {{ note.get_note_type_display }}
+                        </h3>
+
+                        <span>
+                            {{ note.created_at|date:"M d, Y H:i" }}
+                        </span>
+
+                    </div>
+
+
+                    {% if note.is_signed %}
+
+                        <span>
+                            Signed
+                        </span>
+
+                    {% else %}
+
+                        <span>
+                            Unsigned
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="medical-record-info-grid">
+
+                    <div>
+
+                        <span>
+                            Author
+                        </span>
+
+                        <strong>
+                            {{ note.author.full_name }}
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        {% if note.is_signed %}
+
+                            <strong>
+                                Signed
+                            </strong>
+
+                        {% else %}
+
+                            <strong>
+                                Unsigned
+                            </strong>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    {% if note.is_signed and note.signed_at %}
+
+                        <div>
+
+                            <span>
+                                Signed At
+                            </span>
+
+                            <strong>
+                                {{ note.signed_at|date:"M d, Y H:i" }}
+                            </strong>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="medical-record-text-block">
+
+                    <span>
+                        Content
+                    </span>
+
+                    <p>
+                        {{ note.content }}
+                    </p>
+
+                </div>
+
+
+                {% if not note.is_signed %}
+
+                    <div class="medical-record-actions">
+
+                        <form
+                            method="post"
+                            action="{% url 'web:clinical-note-sign' record_id=medical_record.id note_id=note.id %}"
+                        >
+
+                            {% csrf_token %}
+
+                            <button
+                                type="submit"
+                            >
+                                Sign Clinical Note
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                {% endif %}
+
+            </article>
+
+        {% endfor %}
+
+    </div>
+
+{% else %}
+
+    <div class="medical-record-empty">
+
+        No clinical notes recorded.
+
+    </div>
+
+{% endif %}
+    </section>
+
+</div>
+
+{% endblock %}

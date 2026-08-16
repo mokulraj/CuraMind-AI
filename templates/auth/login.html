@@ -11,116 +11,384 @@
 
 {% block content %}
 
-<div class="auth-container">
+<div class="login-page">
 
-    <div class="auth-brand">
+    <!-- Left branding panel -->
+    <section class="login-brand-panel">
 
-        <div class="auth-logo">
-            CM
-        </div>
+        <div class="brand-content">
 
-        <div class="auth-brand-name">
-            CuraMind AI
-        </div>
+            <a href="/" class="brand-logo-link" aria-label="CuraMind AI home">
+                <div class="brand-logo">
+                    <span>CM</span>
+                </div>
 
-        <div class="auth-brand-subtitle">
-            Healthcare Intelligence Platform
-        </div>
+                <div>
+                    <div class="brand-name">
+                        CuraMind <span>AI</span>
+                    </div>
 
-    </div>
+                    <div class="brand-tagline">
+                        Healthcare Intelligence Platform
+                    </div>
+                </div>
+            </a>
 
-    <div class="auth-card">
 
-        <div class="auth-header">
+            <div class="brand-message">
 
-            <div class="page-eyebrow">
-                SECURE ACCESS
-            </div>
+                <div class="brand-eyebrow">
+                    INTELLIGENT HEALTHCARE
+                </div>
 
-            <h1>
-                Welcome back
-            </h1>
+                <h1>
+                    Smarter care.<br>
+                    <span>Better outcomes.</span>
+                </h1>
 
-            <p>
-                Sign in to continue to your healthcare dashboard.
-            </p>
-
-        </div>
-
-        {% if error %}
-        <div class="auth-error">
-            {{ error }}
-        </div>
-        {% endif %}
-
-        <form
-            method="post"
-            action="{% url 'web:login' %}"
-            class="auth-form"
-        >
-
-            {% csrf_token %}
-
-            <div class="form-group">
-
-                <label for="id_email">
-                    Email
-                </label>
-
-                <input
-                    id="id_email"
-                    type="email"
-                    name="email"
-                    autocomplete="email"
-                    placeholder="Enter your email"
-                    value="{{ request.POST.email }}"
-                    required
-                >
+                <p>
+                    A secure healthcare platform connecting patients,
+                    clinicians, diagnostics, and intelligent insights
+                    in one place.
+                </p>
 
             </div>
 
-            <div class="form-group">
 
-                <label for="id_password">
-                    Password
-                </label>
+            <div class="brand-features">
 
-                <input
-                    id="id_password"
-                    type="password"
-                    name="password"
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                    required
-                >
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Secure by design</strong>
+                        <span>Protected healthcare data</span>
+                    </div>
+                </div>
+
+
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>AI-powered insights</strong>
+                        <span>Intelligent clinical assistance</span>
+                    </div>
+                </div>
+
+
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Connected care</strong>
+                        <span>One platform for your healthcare journey</span>
+                    </div>
+                </div>
 
             </div>
 
-            <input
-                type="hidden"
-                name="next"
-                value="{{ next }}"
+        </div>
+
+
+        <div class="brand-footer">
+            <span>© {% now "Y" %} CuraMind AI</span>
+            <span>Secure Healthcare Platform</span>
+        </div>
+
+    </section>
+
+
+    <!-- Login panel -->
+    <main class="login-form-panel">
+
+        <div class="login-form-wrapper">
+
+            <div class="mobile-brand">
+
+                <div class="brand-logo">
+                    <span>CM</span>
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        CuraMind <span>AI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        Healthcare Intelligence Platform
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="login-header">
+
+                <div class="page-eyebrow">
+                    SECURE ACCESS
+                </div>
+
+                <h2>
+                    Welcome back
+                </h2>
+
+                <p>
+                    Sign in to continue to your healthcare workspace.
+                </p>
+
+            </div>
+
+
+            {% if error %}
+                <div class="auth-error" role="alert">
+
+                    <div class="error-icon">
+                        !
+                    </div>
+
+                    <div>
+                        {{ error }}
+                    </div>
+
+                </div>
+            {% endif %}
+
+
+            <form
+                method="post"
+                action="{% url 'web:login' %}"
+                class="auth-form"
+                id="login-form"
             >
 
-            <button
-                type="submit"
-                class="auth-submit"
-            >
-                Sign In
-            </button>
+                {% csrf_token %}
 
-        </form>
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ next }}"
+                >
 
-        <div class="auth-security">
 
-            <span class="security-dot"></span>
+                <!-- Email -->
+                <div class="form-group">
 
-            Secure authentication
+                    <label for="id_email">
+                        Email address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon" aria-hidden="true">
+                            @
+                        </span>
+
+                        <input
+                            id="id_email"
+                            type="email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                            value="{{ request.POST.email }}"
+                            required
+                            autofocus
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <div class="password-label-row">
+
+                        <label for="id_password">
+                            Password
+                        </label>
+
+                        <a href="#" class="forgot-password">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon" aria-hidden="true">
+                            •
+                        </span>
+
+                        <input
+                            id="id_password"
+                            type="password"
+                            name="password"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="password-toggle"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >
+                            <span id="password-toggle-text">
+                                Show
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Remember session -->
+                <div class="form-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                            name="remember_me"
+                            value="1"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="auth-submit"
+                    id="login-submit"
+                >
+
+                    <span class="submit-text">
+                        Sign in
+                    </span>
+
+                    <span
+                        class="submit-loading"
+                        aria-hidden="true"
+                    >
+                        Signing in...
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="auth-security">
+
+                <span class="security-icon">
+                    ✓
+                </span>
+
+                <span>
+                    Your connection is protected with secure authentication.
+                </span>
+
+            </div>
+
+
+            <div class="login-help">
+
+                <span>
+                    Need help accessing your account?
+                </span>
+
+                <span>
+                    Contact your healthcare administrator.
+                </span>
+
+            </div>
 
         </div>
 
-    </div>
+    </main>
 
 </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const passwordInput = document.getElementById("id_password");
+    const passwordToggle = document.getElementById("password-toggle");
+    const passwordToggleText = document.getElementById(
+        "password-toggle-text"
+    );
+
+    const loginForm = document.getElementById("login-form");
+    const loginSubmit = document.getElementById("login-submit");
+
+
+    /*
+     * Password visibility
+     */
+    if (passwordInput && passwordToggle) {
+
+        passwordToggle.addEventListener("click", function () {
+
+            const isPassword =
+                passwordInput.type === "password";
+
+            passwordInput.type =
+                isPassword ? "text" : "password";
+
+            passwordToggleText.textContent =
+                isPassword ? "Hide" : "Show";
+
+            passwordToggle.setAttribute(
+                "aria-label",
+                isPassword ? "Hide password" : "Show password"
+            );
+
+            passwordToggle.setAttribute(
+                "aria-pressed",
+                isPassword ? "true" : "false"
+            );
+
+        });
+
+    }
+
+
+    /*
+     * Login loading state
+     */
+    if (loginForm && loginSubmit) {
+
+        loginForm.addEventListener("submit", function () {
+
+            loginSubmit.classList.add("is-loading");
+
+            loginSubmit.disabled = true;
+
+        });
+
+    }
+
+});
+</script>
 
 {% endblock %}

@@ -1,0 +1,208 @@
+﻿{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">A</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Appointments</span>
+
+        <strong class="role-stat-value">
+            24
+        </strong>
+
+        <span class="role-stat-meta">
+            Today's appointments
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">P</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Patients</span>
+
+        <strong class="role-stat-value">
+            48
+        </strong>
+
+        <span class="role-stat-meta">
+            Today's patients
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">T</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Tasks</span>
+
+        <strong class="role-stat-value">
+            8
+        </strong>
+
+        <span class="role-stat-meta">
+            Pending operations
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">R</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Reports</span>
+
+        <strong class="role-stat-value">
+            3
+        </strong>
+
+        <span class="role-stat-meta">
+            Available reports
+        </span>
+    </div>
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    OPERATIONS
+                </span>
+
+                <h2>
+                    Daily Operations
+                </h2>
+
+                <p>
+                    Manage appointments and healthcare operations.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Appointments
+                    </strong>
+
+                    <span>
+                        24 appointments scheduled today.
+                    </span>
+                </div>
+
+                <span class="role-status role-status-primary">
+                    24
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Patient Operations
+                    </strong>
+
+                    <span>
+                        48 patients require daily coordination.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Pending Tasks
+                    </strong>
+
+                    <span>
+                        Review remaining operational tasks.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    8 Pending
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    SUMMARY
+                </span>
+
+                <h2>
+                    Work Summary
+                </h2>
+
+                <p>
+                    Current healthcare operations overview.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+                <span>Appointments</span>
+                <strong>24</strong>
+            </div>
+
+            <div class="health-item">
+                <span>Patients</span>
+                <strong>48</strong>
+            </div>
+
+            <div class="health-item">
+                <span>Tasks</span>
+                <strong>8</strong>
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}

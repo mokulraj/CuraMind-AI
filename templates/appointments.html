@@ -42,12 +42,12 @@
 
         </div>
 
-        <button
-            type="button"
-            class="primary-button"
-        >
-            + New Appointment
-        </button>
+        <a
+    href="{% url 'web:appointment-new' %}"
+    class="primary-button"
+>
+    + New Appointment
+</a>
 
     </div>
 
@@ -62,9 +62,9 @@
                 Today's Appointments
             </span>
 
-            <strong class="appointment-stat-value">
-                4
-            </strong>
+           <strong class="appointment-stat-value">
+    {{ today_appointments }}
+</strong>
 
         </article>
 
@@ -76,8 +76,8 @@
             </span>
 
             <strong class="appointment-stat-value">
-                12
-            </strong>
+    {{ upcoming_appointments }}
+</strong>
 
         </article>
 
@@ -89,8 +89,8 @@
             </span>
 
             <strong class="appointment-stat-value">
-                28
-            </strong>
+    {{ completed_appointments }}
+</strong>
 
         </article>
 
@@ -122,146 +122,240 @@
 
             <table class="appointment-table">
 
-                <thead>
+               <thead>
+    <tr>
 
-                    <tr>
+        <th>
+            Time
+        </th>
 
-                        <th>
-                            Time
-                        </th>
+        <th>
+            Appointment #
+        </th>
 
-                        <th>
-                            Patient
-                        </th>
+        <th>
+            Patient
+        </th>
 
-                        <th>
-                            Appointment Type
-                        </th>
+        <th>
+            Appointment Type
+        </th>
 
-                        <th>
-                            Provider
-                        </th>
+        <th>
+            Consultation
+        </th>
 
-                        <th>
-                            Status
-                        </th>
+        <th>
+            Provider
+        </th>
 
-                    </tr>
+        <th>
+            Status
+        </th>
 
-                </thead>
+        <th>
+            Actions
+        </th>
 
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            09:30 AM
-                        </td>
-
-                        <td>
-                            Patient A
-                        </td>
-
-                        <td>
-                            General Consultation
-                        </td>
-
-                        <td>
-                            Dr. Admin
-                        </td>
-
-                        <td>
-                            <span class="appointment-status confirmed">
-                                Confirmed
-                            </span>
-                        </td>
-
-                    </tr>
+    </tr>
+</thead>
 
 
-                    <tr>
+             <tbody>
 
-                        <td>
-                            11:00 AM
-                        </td>
+{% for appointment in appointments %}
 
-                        <td>
-                            Patient B
-                        </td>
+<tr>
 
-                        <td>
-                            Follow-up Consultation
-                        </td>
+    <!-- TIME -->
 
-                        <td>
-                            Dr. Admin
-                        </td>
-
-                        <td>
-                            <span class="appointment-status pending">
-                                Pending
-                            </span>
-                        </td>
-
-                    </tr>
+    <td>
+        {{ appointment.time|date:"h:i A" }}
+    </td>
 
 
-                    <tr>
+    <!-- APPOINTMENT NUMBER -->
 
-                        <td>
-                            03:30 PM
-                        </td>
-
-                        <td>
-                            Patient C
-                        </td>
-
-                        <td>
-                            Medical Review
-                        </td>
-
-                        <td>
-                            Dr. Admin
-                        </td>
-
-                        <td>
-                            <span class="appointment-status confirmed">
-                                Confirmed
-                            </span>
-                        </td>
-
-                    </tr>
+    <td>
+        <strong>
+            {{ appointment.appointment_number }}
+        </strong>
+    </td>
 
 
-                    <tr>
+    <!-- PATIENT -->
 
-                        <td>
-                            Tomorrow
-                        </td>
+    <td>
+        {{ appointment.patient }}
+    </td>
 
-                        <td>
-                            Patient D
-                        </td>
 
-                        <td>
-                            Clinical Consultation
-                        </td>
+    <!-- APPOINTMENT TYPE -->
 
-                        <td>
-                            Dr. Admin
-                        </td>
+    <td>
+        {{ appointment.appointment_type }}
+    </td>
 
-                        <td>
-                            <span class="appointment-status pending">
-                                Pending
-                            </span>
-                        </td>
 
-                    </tr>
+    <!-- CONSULTATION MODE -->
 
-                </tbody>
+    <td>
+        {{ appointment.consultation_mode }}
+    </td>
 
+
+    <!-- PROVIDER -->
+
+    <td>
+        {{ appointment.provider }}
+    </td>
+
+
+    <!-- STATUS -->
+
+    <td>
+
+        <span
+            class="appointment-status {{ appointment.status_class }}"
+        >
+            {{ appointment.status }}
+        </span>
+
+    </td>
+
+
+    <!-- ACTIONS -->
+
+    <td>
+
+        <div class="appointment-actions">
+
+
+            {% if appointment.can_cancel %}
+
+            <form
+                method="post"
+                action="{% url 'web:appointment-cancel' appointment.id %}"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="cancellation_reason"
+                    value="Patient requested cancellation"
+                >
+
+                <button
+                    type="submit"
+                    class="appointment-cancel-button"
+                >
+                    Cancel
+                </button>
+
+            </form>
+
+            {% endif %}
+
+
+            {% if appointment.can_confirm %}
+
+            <form
+                method="post"
+                action="{% url 'web:appointment-confirm' appointment.id %}"
+            >
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="appointment-action-button"
+                >
+                    Confirm
+                </button>
+
+            </form>
+
+            {% endif %}
+
+
+            {% if appointment.can_start %}
+
+            <form
+                method="post"
+                action="{% url 'web:appointment-start' appointment.id %}"
+            >
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="appointment-action-button"
+                >
+                    Start
+                </button>
+
+            </form>
+
+            {% endif %}
+
+
+            {% if appointment.can_complete %}
+
+            <form
+                method="post"
+                action="{% url 'web:appointment-complete' appointment.id %}"
+            >
+
+                {% csrf_token %}
+
+                <textarea
+                    name="doctor_notes"
+                    rows="2"
+                    placeholder="Doctor notes..."
+                ></textarea>
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="appointment-action-button"
+                >
+                    Complete
+                </button>
+
+            </form>
+
+            {% endif %}
+
+
+            {% if not appointment.can_cancel and not appointment.can_confirm and not appointment.can_start and not appointment.can_complete %}
+
+            <span class="appointment-no-action">
+                —
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+    <td colspan="8">
+        No appointments found.
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
             </table>
 
         </div>

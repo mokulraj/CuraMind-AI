@@ -146,6 +146,37 @@
         #9a6700;
 }
 
+.appointment-status.scheduled {
+    background: var(--cm-primary-soft);
+    color: var(--cm-primary);
+}
+
+.appointment-status.confirmed {
+    background: var(--cm-primary-soft);
+    color: var(--cm-primary);
+}
+
+.appointment-status.in_progress {
+    background: #fff4d6;
+    color: #9a6700;
+}
+
+.appointment-status.completed {
+    background: #eaf7ef;
+    color: #26734d;
+}
+
+.appointment-status.cancelled,
+.appointment-status.no_show {
+    background: #fff5f5;
+    color: #b42318;
+}
+
+.appointment-status.rescheduled {
+    background: #f1ecff;
+    color: #6941c6;
+}
+
 
 @media (max-width: 700px) {
 
@@ -163,4 +194,190 @@
         width: 100%;
     }
 
+}
+
+/* ============================================================
+   NEW APPOINTMENT FORM
+   ============================================================ */
+
+.appointment-form {
+    padding: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--cm-text);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid var(--cm-border);
+    border-radius: var(--cm-radius-md);
+    background: var(--cm-surface-soft);
+    color: var(--cm-text);
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    transition:
+        border-color var(--cm-transition-base),
+        box-shadow var(--cm-transition-base);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--cm-primary);
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-field-error {
+    color: #b42318;
+    font-size: 11px;
+}
+
+.form-error {
+    margin: 20px 24px 0;
+    padding: 12px 14px;
+    border: 1px solid #e5bcbc;
+    border-radius: var(--cm-radius-md);
+    background: #fff5f5;
+    color: #b42318;
+    font-size: 12px;
+}
+
+.form-error p {
+    margin: 0;
+}
+
+.appointment-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cm-border);
+}
+
+.secondary-button,
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: var(--cm-radius-md);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.secondary-button {
+    border: 1px solid var(--cm-border);
+    background: var(--cm-surface);
+    color: var(--cm-text);
+}
+
+.primary-button {
+    border: 0;
+    background: var(--cm-primary);
+    color: white;
+}
+
+.secondary-button:hover {
+    background: var(--cm-surface-soft);
+}
+
+.primary-button:hover {
+    opacity: 0.92;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+    .appointment-form {
+        padding: 18px;
+    }
+
+    .appointment-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .secondary-button,
+    .primary-button {
+        width: 100%;
+    }
+}
+
+.appointment-cancel-button {
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+
+.appointment-cancel-button:hover {
+    opacity: 0.85;
+}
+
+.appointment-action-disabled {
+    opacity: 0.5;
+}
+
+.appointment-table form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.appointment-table form input {
+    min-width: 140px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid currentColor;
+    font: inherit;
 }

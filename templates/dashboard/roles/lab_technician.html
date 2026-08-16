@@ -1,0 +1,208 @@
+﻿{% extends "dashboard/roles/base_role.html" %}
+
+
+{% block statistics %}
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">L</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Lab Orders</span>
+
+        <strong class="role-stat-value">
+            21
+        </strong>
+
+        <span class="role-stat-meta">
+            Pending orders
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">S</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Samples</span>
+
+        <strong class="role-stat-value">
+            14
+        </strong>
+
+        <span class="role-stat-meta">
+            Samples processing
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">R</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Results</span>
+
+        <strong class="role-stat-value">
+            9
+        </strong>
+
+        <span class="role-stat-meta">
+            Awaiting review
+        </span>
+    </div>
+</article>
+
+
+<article class="role-stat-card">
+    <div class="role-stat-icon">✓</div>
+
+    <div class="role-stat-body">
+        <span class="role-stat-label">Reports</span>
+
+        <strong class="role-stat-value">
+            7
+        </strong>
+
+        <span class="role-stat-meta">
+            Laboratory reports
+        </span>
+    </div>
+</article>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="role-dashboard-grid">
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    LABORATORY
+                </span>
+
+                <h2>
+                    Laboratory Worklist
+                </h2>
+
+                <p>
+                    Manage laboratory orders, samples and results.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="role-list">
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Lab Orders
+                    </strong>
+
+                    <span>
+                        Laboratory orders currently pending.
+                    </span>
+                </div>
+
+                <span class="role-status role-status-primary">
+                    21
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Samples
+                    </strong>
+
+                    <span>
+                        Samples currently being processed.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    14
+                </span>
+
+            </div>
+
+
+            <div class="role-list-item">
+
+                <div class="role-list-content">
+                    <strong>
+                        Results
+                    </strong>
+
+                    <span>
+                        Results awaiting clinical review.
+                    </span>
+                </div>
+
+                <span class="role-status">
+                    9
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="role-panel">
+
+        <div class="role-panel-header">
+
+            <div>
+                <span class="role-panel-eyebrow">
+                    RESULTS
+                </span>
+
+                <h2>
+                    Laboratory Summary
+                </h2>
+
+                <p>
+                    Current laboratory processing activity.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="health-overview">
+
+            <div class="health-item">
+                <span>Lab Orders</span>
+                <strong>21</strong>
+            </div>
+
+            <div class="health-item">
+                <span>Samples</span>
+                <strong>14</strong>
+            </div>
+
+            <div class="health-item">
+                <span>Results</span>
+                <strong>9</strong>
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}
