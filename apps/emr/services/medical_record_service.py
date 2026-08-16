@@ -80,8 +80,13 @@ class MedicalRecordService:
         """
 
         if encounter.status == "COMPLETED":
-            raise ValueError(
+                raise ValueError(
                 "Clinical encounter is already completed."
+            )
+
+        if encounter.status == "CANCELLED":
+            raise ValueError(
+                "Cancelled clinical encounters cannot be completed."
             )
 
         encounter.status = "COMPLETED"
@@ -99,6 +104,41 @@ class MedicalRecordService:
 
     @staticmethod
     @transaction.atomic
+    def cancel_encounter(
+        *,
+        encounter,
+    ):
+        """
+        Cancel an open clinical encounter.
+
+        Only an OPEN encounter can be cancelled.
+        Completed and already-cancelled encounters
+        cannot be cancelled.
+        """
+
+        if encounter.status == "COMPLETED":
+            raise ValueError(
+                "Completed clinical encounters cannot be cancelled."
+            )
+
+        if encounter.status == "CANCELLED":
+            raise ValueError(
+                "Clinical encounter is already cancelled."
+            )
+
+        encounter.status = "CANCELLED"
+
+        encounter.save(
+            update_fields=[
+                "status",
+                "updated_at",
+            ]
+        )
+
+        return encounter
+    
+    @staticmethod
+    @transaction.atomic
     def update_encounter(
         *,
         encounter,
@@ -114,9 +154,9 @@ class MedicalRecordService:
         Completed encounters cannot be modified.
         """
 
-        if encounter.completed_at is not None:
-            raise ValueError(
-                "Completed clinical encounters cannot be modified."
+        if encounter.status != "OPEN":
+                raise ValueError(
+                "Only open clinical encounters can be modified."
             )
 
         fields_to_update = {
