@@ -131,126 +131,251 @@
 
             <div class="medical-record-list">
 
-                {% for encounter in summary.encounters %}
+               {% for encounter in encounters %}
+    <article class="medical-record-item">
 
-                    <article class="medical-record-item">
+        <!-- ============================================= -->
+        <!-- ENCOUNTER HEADER -->
+        <!-- ============================================= -->
 
-                        <div class="medical-record-item-header">
+        <div class="medical-record-item-header">
 
-                            <div>
-                                <h3>
-                                    {{ encounter.get_encounter_type_display }}
-                                </h3>
+            <div>
 
-                                <span>
-                                    {{ encounter.started_at|date:"M d, Y H:i" }}
-                                </span>
-                            </div>
+                <h3>
+                    {{ encounter.get_encounter_type_display }}
+                </h3>
 
-                            <span>
-                                {{ encounter.get_status_display }}
-                            </span>
-
-                        </div>
-
-
-                        <div class="medical-record-info-grid">
-
-                            <div>
-                                <span>Attending Doctor</span>
-
-                                <strong>
-                                    {{ encounter.attending_doctor.user.full_name }}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Chief Complaint</span>
-
-                                <strong>
-                                    {% if encounter.chief_complaint %}
-                                        {{ encounter.chief_complaint }}
-                                    {% else %}
-                                        Not recorded
-                                    {% endif %}
-                                </strong>
-                            </div>
-
-                        </div>
-
-
-                        {% if encounter.history_of_present_illness %}
-
-                            <div class="medical-record-text-block">
-
-                                <span>
-                                    History of Present Illness
-                                </span>
-
-                                <p>
-                                    {{ encounter.history_of_present_illness }}
-                                </p>
-
-                            </div>
-
-                        {% endif %}
-
-
-                        {% if encounter.clinical_summary %}
-
-                            <div class="medical-record-text-block">
-
-                                <span>
-                                    Clinical Summary
-                                </span>
-
-                                <p>
-                                    {{ encounter.clinical_summary }}
-                                </p>
-
-                            </div>
-
-                        {% endif %}
-
-
-                        {% if encounter.examination_notes %}
-
-                            <div class="medical-record-text-block">
-
-                                <span>
-                                    Examination Notes
-                                </span>
-
-                                <p>
-                                    {{ encounter.examination_notes }}
-                                </p>
-
-                            </div>
-
-                        {% endif %}
-
-
-                        {% if encounter.treatment_plan %}
-
-                            <div class="medical-record-text-block">
-
-                                <span>
-                                    Treatment Plan
-                                </span>
-
-                                <p>
-                                    {{ encounter.treatment_plan }}
-                                </p>
-
-                            </div>
-
-                        {% endif %}
-
-                    </article>
-
-                {% endfor %}
+                <span>
+                    {{ encounter.started_at|date:"M d, Y H:i" }}
+                </span>
 
             </div>
+
+
+            <span>
+                {{ encounter.get_status_display }}
+            </span>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- BASIC ENCOUNTER INFORMATION -->
+        <!-- ============================================= -->
+
+        <div class="medical-record-info-grid">
+
+            <div>
+
+                <span>Attending Doctor</span>
+
+                <strong>
+                    {{ encounter.attending_doctor.user.full_name }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Chief Complaint</span>
+
+                <strong>
+
+                    {% if encounter.chief_complaint %}
+
+                        {{ encounter.chief_complaint }}
+
+                    {% else %}
+
+                        Not recorded
+
+                    {% endif %}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- HISTORY OF PRESENT ILLNESS -->
+        <!-- ============================================= -->
+
+        {% if encounter.history_of_present_illness %}
+
+            <div class="medical-record-text-block">
+
+                <span>
+                    History of Present Illness
+                </span>
+
+                <p>
+                    {{ encounter.history_of_present_illness }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================================= -->
+        <!-- CLINICAL SUMMARY -->
+        <!-- ============================================= -->
+
+        {% if encounter.clinical_summary %}
+
+            <div class="medical-record-text-block">
+
+                <span>
+                    Clinical Summary
+                </span>
+
+                <p>
+                    {{ encounter.clinical_summary }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================================= -->
+        <!-- EXAMINATION NOTES -->
+        <!-- ============================================= -->
+
+        {% if encounter.examination_notes %}
+
+            <div class="medical-record-text-block">
+
+                <span>
+                    Examination Notes
+                </span>
+
+                <p>
+                    {{ encounter.examination_notes }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================================= -->
+        <!-- TREATMENT PLAN -->
+        <!-- ============================================= -->
+
+        {% if encounter.treatment_plan %}
+
+            <div class="medical-record-text-block">
+
+                <span>
+                    Treatment Plan
+                </span>
+
+                <p>
+                    {{ encounter.treatment_plan }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================================= -->
+        <!-- COMPLETION INFORMATION -->
+        <!-- ============================================= -->
+
+        {% if encounter.status == "COMPLETED" %}
+
+            <div class="medical-record-text-block">
+
+                <span>
+                    Completed At
+                </span>
+
+                <p>
+                    {% if encounter.completed_at %}
+                        {{ encounter.completed_at|date:"M d, Y H:i" }}
+                    {% else %}
+                        Not recorded
+                    {% endif %}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================================= -->
+        <!-- ENCOUNTER ACTIONS -->
+        <!-- ============================================= -->
+
+               {% if encounter.status == "OPEN" %}
+
+            <div class="clinical-encounter-actions">
+
+                <a
+                    href="{% url 'web:clinical-encounter-update'
+                        record_id=medical_record.id
+                        encounter_id=encounter.id
+                    %}"
+                >
+                    Edit Encounter
+                </a>
+
+                <form
+                    method="post"
+                    action="{% url 'web:clinical-encounter-complete'
+                        record_id=medical_record.id
+                        encounter_id=encounter.id
+                    %}"
+                >
+                    {% csrf_token %}
+
+                    <button type="submit">
+                        Complete Encounter
+                    </button>
+                </form>
+
+                <form
+                    method="post"
+                    action="{% url 'web:clinical-encounter-cancel'
+                        record_id=medical_record.id
+                        encounter_id=encounter.id
+                    %}"
+                >
+                    {% csrf_token %}
+
+                    <button type="submit">
+                        Cancel Encounter
+                    </button>
+                </form>
+
+            </div>
+
+        {% elif encounter.status == "COMPLETED" %}
+
+            <div class="medical-record-empty">
+                This clinical encounter is completed
+                and is read-only.
+            </div>
+
+        {% elif encounter.status == "CANCELLED" %}
+
+            <div class="medical-record-empty">
+                This clinical encounter was cancelled
+                and is read-only.
+            </div>
+
+        {% endif %}
+
+    </article>
+
+{% endfor %}
+
 
         {% else %}
 
@@ -259,6 +384,8 @@
             </div>
 
         {% endif %}
+
+    </section>
 
     </section>
 

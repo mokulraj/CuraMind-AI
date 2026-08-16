@@ -21,6 +21,9 @@ from .views import (
     notifications_page,
     create_clinical_note,
     sign_clinical_note,
+    update_clinical_encounter,
+    complete_clinical_encounter,
+    cancel_clinical_encounter,
 )
 
 
@@ -112,6 +115,30 @@ urlpatterns = [
     ),
 
     # --------------------------------------------------
+    
+    # --------------------------------------------------
+# CLINICAL ENCOUNTERS
+# --------------------------------------------------
+
+path(
+    "medical-records/<uuid:record_id>/encounters/<uuid:encounter_id>/update/",
+    update_clinical_encounter,
+    name="clinical-encounter-update",
+),
+
+path(
+    "medical-records/<uuid:record_id>/encounters/<uuid:encounter_id>/complete/",
+    complete_clinical_encounter,
+    name="clinical-encounter-complete",
+),
+
+path(
+    "medical-records/<uuid:record_id>/encounters/<uuid:encounter_id>/cancel/",
+    cancel_clinical_encounter,
+    name="clinical-encounter-cancel",
+),
+
+
     # AI INSIGHTS
     # --------------------------------------------------
 

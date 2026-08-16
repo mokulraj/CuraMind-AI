@@ -532,10 +532,220 @@ def new_appointment(request):
         return redirect("web:appointments")
 
     # --------------------------------------------------
-    
+    # ==========================================================
+# CLINICAL ENCOUNTERS
+# ==========================================================
+
+@login_required
+@transaction.atomic
+def update_clinical_encounter(
+    request,
+    record_id,
+    encounter_id,
+):
+    """
+    Update clinical information for an encounter.
+    """
+
+    if request.method != "POST":
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    medical_record = (
+        MedicalRecord.objects
+        .filter(
+            id=record_id,
+            is_deleted=False,
+            is_active=True,
+        )
+        .first()
+    )
+
+    if medical_record is None:
+        raise Http404("Medical record not found.")
+
+    encounter = (
+        ClinicalEncounter.objects
+        .filter(
+            id=encounter_id,
+            medical_record=medical_record,
+            is_deleted=False,
+            is_active=True,
+        )
+        .first()
+    )
+
+    if encounter is None:
+        raise Http404("Clinical encounter not found.")
+
+    try:
+        MedicalRecordService.update_encounter(
+            encounter=encounter,
+            chief_complaint=request.POST.get(
+                "chief_complaint",
+                "",
+            ).strip(),
+            history_of_present_illness=request.POST.get(
+                "history_of_present_illness",
+                "",
+            ).strip(),
+            clinical_summary=request.POST.get(
+                "clinical_summary",
+                "",
+            ).strip(),
+            examination_notes=request.POST.get(
+                "examination_notes",
+                "",
+            ).strip(),
+            treatment_plan=request.POST.get(
+                "treatment_plan",
+                "",
+            ).strip(),
+        )
+
+    except ValueError as exc:
+        messages.error(
+            request,
+            str(exc),
+        )
+
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    messages.success(
+        request,
+        "Clinical encounter updated successfully.",
+    )
+
+    return redirect(
+        "web:medical-record-detail",
+        record_id=record_id,
+    )
+
+
+@login_required
+@transaction.atomic
+def complete_clinical_encounter(
+    request,
+    record_id,
+    encounter_id,
+):
+    """
+    Complete an open clinical encounter.
+    """
+
+    if request.method != "POST":
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    encounter = (
+        ClinicalEncounter.objects
+        .filter(
+            id=encounter_id,
+            medical_record_id=record_id,
+            is_deleted=False,
+            is_active=True,
+        )
+        .first()
+    )
+
+    if encounter is None:
+        raise Http404("Clinical encounter not found.")
+
+    try:
+        MedicalRecordService.complete_encounter(
+            encounter=encounter,
+        )
+
+    except ValueError as exc:
+        messages.error(
+            request,
+            str(exc),
+        )
+
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    messages.success(
+        request,
+        "Clinical encounter completed successfully.",
+    )
+
+    return redirect(
+        "web:medical-record-detail",
+        record_id=record_id,
+    )
+
+
+@login_required
+@transaction.atomic
+def cancel_clinical_encounter(
+    request,
+    record_id,
+    encounter_id,
+):
+    """
+    Cancel an open clinical encounter.
+    """
+
+    if request.method != "POST":
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    encounter = (
+        ClinicalEncounter.objects
+        .filter(
+            id=encounter_id,
+            medical_record_id=record_id,
+            is_deleted=False,
+            is_active=True,
+        )
+        .first()
+    )
+
+    if encounter is None:
+        raise Http404("Clinical encounter not found.")
+
+    try:
+        MedicalRecordService.cancel_encounter(
+            encounter=encounter,
+        )
+
+    except ValueError as exc:
+        messages.error(
+            request,
+            str(exc),
+        )
+
+        return redirect(
+            "web:medical-record-detail",
+            record_id=record_id,
+        )
+
+    messages.success(
+        request,
+        "Clinical encounter cancelled successfully.",
+    )
+
+    return redirect(
+        "web:medical-record-detail",
+        record_id=record_id,
+    )
     
     
     # ==========================================================
+    
+    
 # CLINICAL NOTES
 # ==========================================================
 
